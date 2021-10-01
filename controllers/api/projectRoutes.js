@@ -34,5 +34,16 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+router.put('/api/message/:message_id', (req, res) => {
+  try{
+    const updateProject = newProject.find(params[:id,]){
+    where: {
+      id: req.params.id,
+      user_id: req.session.user_id,
+    });
+    if 
+    
+  }
+
 
 module.exports = router;
