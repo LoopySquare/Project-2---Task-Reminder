@@ -20,7 +20,7 @@ Message.init(
     content: {
       type: DataTypes.TEXT,
     },
-    category: {
+    description: {
       type: DataTypes.STRING,
     },
     day: {

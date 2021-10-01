@@ -1,5 +1,19 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Message } = require('../../models');
+const withAuth = require('../../utils/auth');
+
+router.get('/:id', withAuth, async (req, res) => {
+  try{
+    const messageData = await User.findByPk(req.params.id, {
+      include: [{ model: Message}]
+    })
+  
+    res.status(200).json(messageData);
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post('/', async (req, res) => {
   try {
@@ -18,7 +32,11 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne({ 
+    // attributes: { exclude: ['password'] },
+    where: { email: req.body.email } 
+    
+    });
 
     if (!userData) {
       res
@@ -40,7 +58,14 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       
-      res.json({ user: userData, message: 'You are now logged in!' });
+      res.json({ user: {
+                    id: userData.id,   
+                    first_name: userData.first_name,
+                    last_name: userData.last_name,
+                    phone: userData.phone,
+                    email: userData.email
+                  } , 
+                    message: 'You are now logged in!' });
     });
 
   } catch (err) {
