@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Project extends Model {}
+class Message extends Model {}
 
-Project.init(
+Message.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,20 +11,28 @@ Project.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    event_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      validate: {
+        len: [1,250],
+      },
     },
-    description: {
+    content: {
+      type: DataTypes.TEXT,
+    },
+    category: {
       type: DataTypes.STRING,
     },
-    date_created: {
-      type: DataTypes.DATE,
+    day: {
+      type: DataTypes.INT,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
+      validate: {
+        len: [1],
+        isNumeric: true,
+      }
     },
-    needed_funding: {
-      type: DataTypes.FLOAT,
+    send_time: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     user_id: {
@@ -40,8 +48,8 @@ Project.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'message',
   }
 );
 
-module.exports = Project;
+module.exports = Message;
