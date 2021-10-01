@@ -1,0 +1,26 @@
+[
+  {
+    "event_name": "Parking",
+    "content": "Move your car dumby",
+    "category": "General",
+    "day": 1,
+    "send_time": "6:15 AM",
+    "user_id": "1"
+  },
+  {
+    "event_name": "Doctor Appointment",
+    "content": "Weekly Checkup reminder for Dr. Smith @ 3PM",
+    "category": "General",
+    "day": 1,
+    "send_time": "1:30 PM",
+    "user_id": "2"
+  },
+  {
+    "event_name": "Airport Pickup",
+    "content": "You have to pick up your sister from the AirPort!",
+    "category": "Travel",
+    "day": 1,
+    "send_time": "7:30 PM",
+    "user_id": "3"
+  }
+]
