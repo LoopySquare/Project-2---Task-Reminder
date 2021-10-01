@@ -24,7 +24,7 @@ Message.init(
       type: DataTypes.STRING,
     },
     day: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
         len: [1],
