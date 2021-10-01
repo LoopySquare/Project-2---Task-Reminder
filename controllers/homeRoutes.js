@@ -1,10 +1,25 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Message, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
+    // Get all messages and JOIN with user data
+    const messageData = await Message.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['first_Name', 'last_name'],
+        },
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const messages = messageData.map((message) => message.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
     res.render('homepage', { 
+      messages, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -12,9 +27,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/project/:id', async (req, res) => {
+router.get('/message/:id', async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
+    const messageData = await Message.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -23,10 +38,10 @@ router.get('/project/:id', async (req, res) => {
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    const message = messageData.get({ plain: true });
 
-    res.render('project', {
-      ...project,
+    res.render('message', {
+      ...message,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -40,7 +55,7 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      include: [{ model: Message }],
     });
 
     const user = userData.get({ plain: true });
@@ -61,7 +76,7 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('profile');
+  res.render('login');
 });
 
 module.exports = router;
