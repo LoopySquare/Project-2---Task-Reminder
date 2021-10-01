@@ -17,3 +17,15 @@ p {
   border-radius: 25px;
   background-color: rgba(255, 255, 255, 0.6)
 }
+
+.container{
+  margin: auto;
+}
+
+.profile-container{
+  background-color: aliceblue;
+}
+
+.column{
+  background-color: aqua;
+}
