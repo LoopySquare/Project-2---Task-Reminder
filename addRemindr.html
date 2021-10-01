@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/playground.css">
+    <link rel="stylesheet" href="./public/customBulma/bulma.css">
+    <title>Remindr</title>
+</head>
+<body>
+    <section class="hero is-fullheight">
+        <div class="hero-body container">
+            <div class="card pr-4 pl-4">
+                <div class="card-content">
+                    <div class="field">
+                        <label class="label">Remindr Name</label>
+                        <div class="control has-icons-left">
+                        <input class="input" type="text" placeholder="Remindr Name">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        </div>
+                    </div>
+                    
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                          <textarea class="textarea" placeholder="Short description of Remindr"></textarea>
+                        </div>
+                      </div>
+
+                    <div class="field">
+                        <label class="label">Alert Days</label>
+                        <div class="control has-icons-left has-icons-right">
+                        <input class="input" type="text" placeholder="username">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Alert Time</label>
+                        <p class="control has-icons-left">
+                        <input class="input" type="password" placeholder="Password">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Do you want to set the Remindr to repeat?</label>
+                        <div class="control">
+                          <label class="radio">
+                            <input type="radio" name="question">
+                            Yes
+                          </label>
+                          <label class="radio">
+                            <input type="radio" name="question">
+                            No
+                          </label>
+                        </div>
+                      </div>
+
+                    <div class="control pt-5 pb-2 has-text-centered">
+                        <button id='search' class="button is-info is-rounded is-fullwidth">
+                            Create Remindr
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
