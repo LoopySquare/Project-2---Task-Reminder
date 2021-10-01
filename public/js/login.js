@@ -1,6 +1,8 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
+  console.log('I clicked this button');
+
   // Collect values from the login form
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
@@ -32,7 +34,7 @@ const signupFormHandler = async (event) => {
   if (name && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ first_name, last_name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -45,9 +47,15 @@ const signupFormHandler = async (event) => {
 };
 
 document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
+  .querySelector('#login-button')
+  .addEventListener('click', loginFormHandler);
+
+console.log(document.querySelector('#email-login'));
+
+// document
+//   .querySelector('#login-button')
+//   .addEventListener('submit', console.log('I clicked this button'));
 
 document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+  .querySelector('#signup-form')
+  .addEventListener('click', signupFormHandler);

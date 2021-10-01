@@ -4,48 +4,10 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all messages and JOIN with user data
-    const messageData = await Message.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['first_Name', 'last_name'],
-        },
-      ],
-    });
-
-    // Serialize data so the template can read it
-    const messages = messageData.map((message) => message.get({ plain: true }));
-
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      messages, 
-      logged_in: req.session.logged_in 
-    });
+    res.render('homepage');
   } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get('/message/:id', async (req, res) => {
-  try {
-    const messageData = await Message.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
-    const message = messageData.get({ plain: true });
-
-    res.render('message', {
-      ...message,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
+    res.status(404).json(err);
   }
 });
 
