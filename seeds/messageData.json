@@ -2,22 +2,22 @@
   {
     "event_name": "Parking",
     "content": "Move your car dumby",
-    "category": "General",
+    "description": "Reminder for Thursday Street Sweeping",
     "day": 1,
     "send_time": "6:15 AM"
   },
   {
     "event_name": "Doctor Appointment",
     "content": "Weekly Checkup reminder for Dr. Smith @ 3PM",
-    "category": "General",
-    "day": 1,
+    "description": "Check-up for after my knee surgery",
+    "day": 2,
     "send_time": "1:30 PM"
   },
   {
     "event_name": "Airport Pickup",
     "content": "You have to pick up your sister from the AirPort!",
-    "category": "Travel",
-    "day": 1,
+    "description": "Flight 2003 United",
+    "day": 3,
     "send_time": "7:30 PM"
   }
 ]
