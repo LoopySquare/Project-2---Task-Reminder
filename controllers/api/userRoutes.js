@@ -86,7 +86,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.put('/api/message/:message_id', (req, res) => {
+router.put('/api/message/:message_id', async (req, res) => {
     try {
         const user = auth.current.user
 
@@ -109,7 +109,7 @@ router.put('/api/message/:message_id', (req, res) => {
             message: 'There was an error updating your profile :/',
         })
     }
-}
+})
 
 
 module.exports = router;
