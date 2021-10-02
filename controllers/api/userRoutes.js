@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Message } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// Return All Messages associated with the User
 router.get('/:id', withAuth, async (req, res) => {
   try{
     const messageData = await User.findByPk(req.params.id, {
@@ -15,7 +16,8 @@ router.get('/:id', withAuth, async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+// Create New User Account
+router.post('/create', async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
@@ -30,10 +32,10 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Login to Site
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ 
-    // attributes: { exclude: ['password'] },
     where: { email: req.body.email } 
     
     });
@@ -73,6 +75,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Log out of Site
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
