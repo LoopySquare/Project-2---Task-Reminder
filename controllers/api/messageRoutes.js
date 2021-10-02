@@ -15,6 +15,8 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+router.get
+
 
 router.post('/api/message', withAuth, async (req, res) => {
   try {
