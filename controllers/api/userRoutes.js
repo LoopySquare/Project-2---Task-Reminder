@@ -36,7 +36,6 @@ router.post('/create', async (req, res) => {
 
 // Login to Site
 router.post('/login', async (req, res) => {
-  res.sendFile('/initialPage.html');
   try {
     const userData = await User.findOne({ 
     where: { email: req.body.email } 
@@ -90,8 +89,7 @@ router.post('/logout', (req, res) => {
 });
 
 
-router.put('/api/message/:message_id', async,(req, res) => {
-  res.sendFile('/profilePage.html');
+router.put('/api/message/:message_id', async (req, res) => {
     try {
         const user = auth.current.user
 
