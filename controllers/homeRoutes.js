@@ -11,6 +11,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/create', async (req, res) => {
+  try {
+    // Pass serialized data and session flag into template
+    res.render('createAccount');
+  } catch (err) {
+    res.status(404).json(err);
+  }
+});
+
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {
