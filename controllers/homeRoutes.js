@@ -39,7 +39,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    console.log(user);
+    // console.log(user);
 
     const remindrs = userData.messages.map((remindr) => remindr.get({ plain: true }));
 
