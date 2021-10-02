@@ -4,31 +4,40 @@ const createFormHandler = async (event) => {
   console.log('I clicked this button');
 
   // Collect values from the login form
-  const firstName = document.querySelector('#first-name').value.trim();
-  const lastName = document.querySelector('#last-name').value.trim();
+  const first_name = document.querySelector('#first-name').value.trim();
+  const last_name = document.querySelector('#last-name').value.trim();
   const password = document.querySelector('#password').value.trim();
   const confirmPassword = document.querySelector('#confirm-password').value.trim();
   const email = document.querySelector('#email').value.trim();
-  const phone = document.querySelector('#phone').value.trim();
+  const rawPhone = document.querySelector('#phone').value.trim();
 
   let passMatch = validatePass(password, confirmPassword);
   let validEmail = validateEmail(email);
-
-  console.log(passMatch);
+  let phone = formatPhone(rawPhone);
 
   if(!validEmail){
-    document.querySelector('#confirm-password').focus();
+    document.querySelector('#email').focus();
+    blankPass();
+    return
   }
 
   if(!passMatch) {
-    document.querySelector('#password').value = ""
-    document.querySelector('#confirm-password').value = ""
+    blankPass();
+    document.querySelector('#password').focus();
+    return
   }
 
-  if (firstName && lastName && email && validEmail && password && passMatch && phone) {
+  if(phone.length !== 10){
+    blankPass();
+    document.querySelector('#phone').focus();
+    alert("Please enter a valid 10 digit Phone Number")
+    return
+  }
+
+  if (first_name && last_name && email && password && phone) {
     const response = await fetch('/api/users/create', {
       method: 'POST',
-      body: JSON.stringify({ firstName, lastName, email, password, phone }),
+      body: JSON.stringify({ first_name, last_name, email, password, phone }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -41,6 +50,11 @@ const createFormHandler = async (event) => {
 };
 
 const validatePass = (pass, confirmPass) => {
+
+  if(pass.length < 8){
+    alert("Password must be more than 8 Characters");
+    return false;
+  }
 
   if(pass !== confirmPass) {
     alert("Passwords did not match");
@@ -65,17 +79,14 @@ const validateEmail = (email) => {
 
 const formatPhone = (phone) => {
 
-  let cleanNum =  phone.replace(/\D/g, '');
+  return phone.replace(/\D/g, '');
+}
 
-  if(cleanNum.length !== 10){
-    alert("Please enter a valid 10 digit Phone Number")
-  }
-
+const blankPass = () => {
+  document.querySelector('#password').value = ""
+  document.querySelector('#confirm-password').value = ""
 }
 
 document
   .querySelector('#create-button')
   .addEventListener('click', createFormHandler);
-
-
-  console.log(document.querySelector('#create-button'));
