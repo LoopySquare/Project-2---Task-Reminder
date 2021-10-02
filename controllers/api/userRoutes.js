@@ -34,6 +34,7 @@ router.post('/create', async (req, res) => {
 
 // Login to Site
 router.post('/login', async (req, res) => {
+  res.sendFile('/initialPage.html');
   try {
     const userData = await User.findOne({ 
     where: { email: req.body.email } 
@@ -86,15 +87,18 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.put('/api/message/:message_id', (req, res) => {
+
+router.put('/api/message/:message_id', async,(req, res) => {
+  res.sendFile('/profilePage.html');
     try {
         const user = auth.current.user
 
         // update data
-        user.name = request.input('name')
-        user.username = request.input('username')
+        user.firstName = request.input('first name')
+        user.lastName = request.input ('last name')
         user.email = request.input('email')
-
+        user.phone = request.input ('email')
+        
         await user.save()
 
         return response.json({
@@ -109,7 +113,7 @@ router.put('/api/message/:message_id', (req, res) => {
             message: 'There was an error updating your profile :/',
         })
     }
-}
+})
 
 
 module.exports = router;
