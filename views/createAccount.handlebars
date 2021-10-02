@@ -6,7 +6,7 @@
         <div class="field">
           <label class="label">First Name</label>
           <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="First Name">
+            <input required id="first-name" class="input" type="text" placeholder="First Name">
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
@@ -16,7 +16,7 @@
         <div class="field">
           <label class="label">Last Name</label>
           <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="Last Name">
+            <input required id="last-name" class="input" type="text" placeholder="Last Name">
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
@@ -24,11 +24,11 @@
         </div>
 
         <div class="field">
-          <label class="label">Username</label>
+          <label class="label">Email</label>
           <div class="control has-icons-left has-icons-right">
-            <input class="input" type="text" placeholder="username">
+            <input required id="email" class="input" type="email" placeholder="example@email.com">
               <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-envelope"></i>
               </span>
           </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="field">
           <label class="label">Password</label>
           <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Password">
+            <input required id="password" class="input" type="password" placeholder="Password">
               <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
               </span>
@@ -46,7 +46,7 @@
         <div class="field">
           <label class="label">Confirm Password</label>
           <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Confirm Password">
+            <input required id="confirm-password" class="input" type="password" placeholder="Confirm Password">
               <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
               </span>
@@ -54,19 +54,9 @@
         </div>
 
         <div class="field">
-          <label class="label">Email</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input" type="email" placeholder="example@email.com">
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
-          </div>
-        </div>
-
-        <div class="field">
           <label class="label">Phone Number</label>
           <div class="control has-icons-left has-icons-right">
-            <input class="input" type="text" placeholder="123-456-7890">
+            <input required id="phone" class="input" type="text" placeholder="123-456-7890">
               <span class="icon is-small is-left">
                 <i class="fas fa-phone"></i>
               </span>
@@ -74,7 +64,7 @@
         </div>
 
         <div class="control pt-5 pb-2 has-text-centered">
-          <button id='search' class="button is-info is-rounded is-fullwidth">
+          <button id='create-button' class="button is-info is-rounded is-fullwidth">
             Create Account
           </button>
         </div>
@@ -83,3 +73,5 @@
     </div>
   </div>
 </section>
+
+<script src="/js/addUser.js"></script>
