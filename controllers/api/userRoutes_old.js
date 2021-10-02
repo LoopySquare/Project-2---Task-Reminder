@@ -1,18 +1,16 @@
 const router = require('express').Router();
-const { RuleTester } = require('eslint');
 const { User, Message } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Return All Messages associated with the User
-router.get('/', withAuth, async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   try{
-    const messageData = await User.findByPk(req.session.user_id, {
+    const messageData = await User.findByPk(req.params.id, {
       include: [{ model: Message}]
     })
+  
+    res.status(200).json(messageData);
 
-    console.log(messageData);
-    
-    res.status(200).json(messageData)
   } catch (err) {
     res.status(500).json(err);
   }
@@ -88,7 +86,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.put('/api/message/:message_id', async (req, res) => {
+router.put('/api/message/:message_id', (req, res) => {
     try {
         const user = auth.current.user
 
@@ -111,7 +109,7 @@ router.put('/api/message/:message_id', async (req, res) => {
             message: 'There was an error updating your profile :/',
         })
     }
-})
+}
 
 
 module.exports = router;

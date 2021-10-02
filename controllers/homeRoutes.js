@@ -22,6 +22,9 @@ router.get('/create', async (req, res) => {
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
+
+  console.log(req.session.user_id);
+
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
@@ -29,14 +32,25 @@ router.get('/profile', withAuth, async (req, res) => {
       include: [{ model: Message }],
     });
 
-     // Serialize data so the template can read it
-     const remindrs = messageData.map((remindr) => remindr.get({ plain: true }));
+    console.log(userData);
 
-    res.render('profile', {
-      ...remindrs,
-      logged_in: true
-    });
+     // Serialize data so the template can read it
+    //  const messageArr = messageData.map((remindr) => remindr.messages);
+
+    const user = userData.get({ plain: true });
+
+    console.log(user);
+
+    const remindrs = userData.messages.map((remindr) => remindr.get({ plain: true }));
+
+    //  const dishes = dishData.map((dish) => dish.get({ plain: true }));
+
+    //  console.log(remindrs);
+
+    res.render('profile', { user });
+
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
