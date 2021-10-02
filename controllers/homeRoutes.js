@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Message, User } = require('../models');
 const withAuth = require('../utils/auth');
+const ConvertDate = require('../utils/dateConversion');
 
 router.get('/', async (req, res) => {
   try {
@@ -23,8 +24,6 @@ router.get('/create', async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
 
-  console.log(req.session.user_id);
-
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
@@ -32,20 +31,17 @@ router.get('/profile', withAuth, async (req, res) => {
       include: [{ model: Message }],
     });
 
-    console.log(userData);
-
-     // Serialize data so the template can read it
-    //  const messageArr = messageData.map((remindr) => remindr.messages);
-
+    // Serialize data so the template can read it
     const user = userData.get({ plain: true });
 
-    // console.log(user);
+    //Iterate over the messages array
+    const messages = userData.messages.map((remindr) => remindr.get({ plain: true }));
 
-    const remindrs = userData.messages.map((remindr) => remindr.get({ plain: true }));
-
-    //  const dishes = dishData.map((dish) => dish.get({ plain: true }));
-
-    //  console.log(remindrs);
+    // Convert unix date value to Week Day Name
+    const remindrs = messages.map((remindr) => {
+      remindr.day = ConvertDate(remindr.day)
+      return remindr; 
+    })
 
     res.render('profile', { user, remindrs });
 
