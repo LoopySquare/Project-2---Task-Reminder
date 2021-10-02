@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { RuleTester } = require('eslint');
 const { User, Message } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -8,9 +9,7 @@ router.get('/:id', withAuth, async (req, res) => {
     const messageData = await User.findByPk(req.params.id, {
       include: [{ model: Message}]
     })
-  
-    res.status(200).json(messageData);
-
+    res.status(200).json(messageData)
   } catch (err) {
     res.status(500).json(err);
   }

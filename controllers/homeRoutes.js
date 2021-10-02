@@ -29,10 +29,11 @@ router.get('/profile', withAuth, async (req, res) => {
       include: [{ model: Message }],
     });
 
-    const user = userData.get({ plain: true });
+     // Serialize data so the template can read it
+     const remindrs = messageData.map((remindr) => remindr.get({ plain: true }));
 
     res.render('profile', {
-      ...user,
+      ...remindrs,
       logged_in: true
     });
   } catch (err) {
