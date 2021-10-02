@@ -1,5 +1,5 @@
 const router = require('express').Router();
-var mysql = require('mysql');
+// var mysql = require('mysql');
 const apiRoutes = require('./api');
 const homeRoutes = require('./homeRoutes');
 
