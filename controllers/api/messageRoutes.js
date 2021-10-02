@@ -16,7 +16,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/api/message', withAuth, async (req, res) => {
   try {
     const newMessage = await Message.create({
       ...req.body,
@@ -29,7 +29,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/api/message/:message_id', withAuth, async (req, res) => {
   try {
     const messageData = await Message.destroy({
       where: {
@@ -46,6 +46,21 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(200).json(messageData);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.put('/api/message/:message_id', (req, res) => {
+  try{
+    const updateProject = Project.update(params[id]) ({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+
+    res.status(200).json(updateProject);
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 

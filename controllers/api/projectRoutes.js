@@ -37,14 +37,19 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 router.put('/api/message/:message_id', (req, res) => {
   try{
-    const updateProject = newProject.find(params[:id,]){
-    where: {
-      id: req.params.id,
-      user_id: req.session.user_id,
+    const updateProject = Project.update(params[id]) ({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
     });
-    if 
-    
+
+    res.status(200).json(updateProject);
+  } catch (err) {
+    res.status(400).json(err);
   }
+});
+
 
 
 module.exports = router;
