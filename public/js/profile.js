@@ -1,41 +1,28 @@
-// const logout = async (event) => {
-
-//     const response = await fetch(`/api/users/logout`, {
-//       method: 'POST',
-//       body: JSON.stringify({}),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-
-//     if (response.ok) {
-//       document.location.replace('/');
-//     } else {
-//       alert('Failed to logout');
-//     }
-
-// };
 
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+  console.log('I clicked here');
+  if (event.target.hasAttribute('data-messageId')) {
+    const id = event.target.getAttribute('data-messageId');
 
-    const response = await fetch(`/api/messages/${id}`, {
-      method: 'DELETE',
-    });
+    let confirmDel = confirm("Are you sure you want to delete this Remindr?");
 
-    if (response.ok) {
-      document.location.replace('/profile');
+    if(confirmDel){
+      const response = await fetch(`/api/messages/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        document.location.replace('/profile');
+      } else {
+        alert('Failed to delete project');
+      }
     } else {
-      alert('Failed to delete project');
+      document.location.replace('/profile');
     }
+
   }
 };
 
-// document
-//   .querySelector('logout')
-//   .addEventListener('submit', newFormHandler);
-
 document
-  .querySelector('.project-list')
+  .querySelector('.delete-message')
   .addEventListener('click', delButtonHandler);
