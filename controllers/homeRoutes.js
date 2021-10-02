@@ -47,7 +47,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     //  console.log(remindrs);
 
-    res.render('profile', { user });
+    res.render('profile', { user, remindrs });
 
   } catch (err) {
     console.log(err);
