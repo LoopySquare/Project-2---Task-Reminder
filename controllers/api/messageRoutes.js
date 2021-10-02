@@ -15,8 +15,6 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.get
-
 
 router.post('/api/message', withAuth, async (req, res) => {
   try {
@@ -31,7 +29,7 @@ router.post('/api/message', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/api/message/:message_id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const messageData = await Message.destroy({
       where: {
@@ -47,6 +45,7 @@ router.delete('/api/message/:message_id', withAuth, async (req, res) => {
 
     res.status(200).json(messageData);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
