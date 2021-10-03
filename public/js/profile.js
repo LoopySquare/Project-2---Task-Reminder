@@ -1,4 +1,5 @@
 
+// FUNCTION TO HANDLE DELETING MESSAGE
 const delButtonHandler = async (event) => {
   console.log('I clicked here');
   if (event.target.hasAttribute('data-remindrId')) {
@@ -23,6 +24,7 @@ const delButtonHandler = async (event) => {
   }
 };
 
+// FUNCTION TO HANDLE TRANSITION TO EDIT PAGE
 const editButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-remindrId')) {
     const id = event.target.getAttribute('data-remindrId');
@@ -33,10 +35,25 @@ const editButtonHandler = async (event) => {
   };
 }
 
-document
-  .querySelector('.delete-remindr')
-  .addEventListener('click', delButtonHandler);
+const newButtonHandler = async () => {
+  
+  document.location.replace(`/message/add/`);
+
+};
+
+// HAD TO USE JQUERY BECAUSE TABLE BUTTON BINDING ISSUES
+$(document).ready(function () {
+
+  $(document).on('click', '.delete-remindr', delButtonHandler)
+
+})
+
+$(document).ready(function () {
+
+  $(document).on('click', '.edit-remindr', editButtonHandler)
+
+})
 
 document
-  .querySelector('.edit-remindr')
-  .addEventListener('click', editButtonHandler);
+  .querySelector('#new-remindr')
+  .addEventListener('click', newButtonHandler);
