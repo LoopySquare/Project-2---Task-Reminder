@@ -49,6 +49,7 @@ const createFormHandler = async (event) => {
   }
 };
 
+// VALIDATE PASSWORD AND CONFIRM PASSWORD ARE THE SAME AND PROPER LEN
 const validatePass = (pass, confirmPass) => {
 
   if(pass.length < 8){
@@ -64,6 +65,7 @@ const validatePass = (pass, confirmPass) => {
   }
 }
 
+// VALIDATE EMAIL IS IN AN EMAIL FORMAT
 const validateEmail = (email) => {
 
   let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -77,11 +79,13 @@ const validateEmail = (email) => {
 
 }
 
+// STRIP DASHES FROM PHONE FIELDS
 const formatPhone = (phone) => {
 
   return phone.replace(/\D/g, '');
 }
 
+// BLANK OUT PW FIELDS UPON REFRESHES
 const blankPass = () => {
   document.querySelector('#password').value = ""
   document.querySelector('#confirm-password').value = ""

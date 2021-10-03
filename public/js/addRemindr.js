@@ -1,24 +1,8 @@
-const elem = document.getElementById('ampm');
 
-const am_pm = elem.dataset.ampm
-
-const amRadio = document.querySelector("#AM");
-const pmRadio = document.querySelector("#PM");
-
-if(am_pm == "AM"){
-  amRadio.checked = true;
-} else {
-  pmRadio.checked = true;
-}
-
-const saveButtonHandler = async (event) => {
+const createButtonHandler = async (event) => {
   event.preventDefault();
 
   console.log("i clicked this");
-
-  const id = event.target.getAttribute('data-remindrId');
-
-  console.log(id);
 
   // Collect values from the login form
   const event_name = document.querySelector('#event_name').value.trim();
@@ -28,12 +12,17 @@ const saveButtonHandler = async (event) => {
   const send_time = document.querySelector('#send_time').value.trim();
   const am_pm = document.querySelector('input[name="ampm"]:checked').value.trim();
 
+  console.log(event_name);
+  console.log(description);
+  console.log(content);
+  console.log(send_date);
+  console.log(send_time);
   console.log(am_pm);
 
   if (event_name && description && content && send_date && send_time && am_pm) {
     // Send a POST request to the API endpoint
-    const response = await fetch(`/api/messages/${id}`, {
-      method: 'PUT',
+    const response = await fetch(`/api/messages/`, {
+      method: 'POST',
       body: JSON.stringify({ event_name, description, content, send_date, send_time, am_pm }),
       headers: { 'Content-Type': 'application/json' },
     });
@@ -60,8 +49,8 @@ const cancelButtonHandler = async (event) => {
 };
 
 document
-  .querySelector('#save-remindr')
-  .addEventListener('click', saveButtonHandler);
+  .querySelector('#create-remindr')
+  .addEventListener('click', createButtonHandler);
 
 document
   .querySelector('#cancel')
