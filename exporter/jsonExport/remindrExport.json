@@ -1,0 +1,10 @@
+[
+    {
+        "first_name": "Michel",
+        "last_name": "Scott",
+        "email": "mscott@mscottpaperco.com",
+        "event_name": "Doctor Appointment",
+        "content": "Weekly Checkup reminder for Dr. Smith @ 3PM",
+        "send_time": "03:45"
+    }
+]
