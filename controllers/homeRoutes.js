@@ -3,6 +3,7 @@ const { Message, User } = require('../models');
 const withAuth = require('../utils/auth');
 const ConvertDate = require('../utils/dateConversion');
 
+
 router.get('/', async (req, res) => {
   try {
     // Pass serialized data and session flag into template
@@ -35,13 +36,7 @@ router.get('/profile', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
 
     //Iterate over the messages array
-    const messages = userData.messages.map((remindr) => remindr.get({ plain: true }));
-
-    // Convert unix date value to Week Day Name
-    const remindrs = messages.map((remindr) => {
-      remindr.day = ConvertDate(remindr.day)
-      return remindr; 
-    })
+    const remindrs = userData.messages.map((remindr) => remindr.get({ plain: true }));
 
     res.render('profile', { user, remindrs });
 
@@ -50,6 +45,27 @@ router.get('/profile', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/message/edit/:id', withAuth, async (req, res) => {
+
+  try {
+    const messageData = await Message.findByPk(req.params.id, {
+      where: {
+      user_id: req.session.user_id,
+      },
+    })
+
+    const remindrs = messageData.get({ plain: true });
+
+    res.render('editRemindr', { remindrs } )
+
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+
+});
+
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
