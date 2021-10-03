@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Message, User } = require('../models');
 const withAuth = require('../utils/auth');
-const ConvertDate = require('../utils/dateConversion');
 
 
 router.get('/', async (req, res) => {
@@ -62,6 +61,19 @@ router.get('/message/edit/:id', withAuth, async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
+  }
+
+});
+
+router.get('/message/add', withAuth, async (req, res) => {
+
+  try {
+
+    res.render('addRemindr')
+
+  } catch (err) {
+    console.log(err);
+    res.status(404).json(err);
   }
 
 });
