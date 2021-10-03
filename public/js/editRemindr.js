@@ -26,15 +26,15 @@ const saveButtonHandler = async (event) => {
   const content = document.querySelector('#content').value.trim();
   const send_date = document.querySelector('#send_date').value.trim();
   const send_time = document.querySelector('#send_time').value.trim();
-  const ampm = document.querySelector('input[name="ampm"]:checked').value.trim();
+  const am_pm = document.querySelector('input[name="ampm"]:checked').value.trim();
 
-  console.log(ampm);
+  console.log(am_pm);
 
-  if (event_name && description && content && send_date && send_time && ampm) {
+  if (event_name && description && content && send_date && send_time && am_pm) {
     // Send a POST request to the API endpoint
     const response = await fetch(`/api/messages/${id}`, {
       method: 'PUT',
-      body: JSON.stringify({ event_name, description, content, send_date, send_time, ampm }),
+      body: JSON.stringify({ event_name, description, content, send_date, send_time, am_pm }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -47,8 +47,24 @@ const saveButtonHandler = async (event) => {
   }
 };
 
+const cancelButtonHandler = async (event) => {
+  event.preventDefault();
+
+  const cancel = confirm("Are you sure you want to cancel?\n All changes will not be saved.")
+
+  if(cancel){
+    document.location.replace(`/profile`);
+  } else {
+    return;
+  }
+};
+
 document
   .querySelector('#save-remindr')
   .addEventListener('click', saveButtonHandler);
+
+document
+  .querySelector('#cancel')
+  .addEventListener('click', cancelButtonHandler);
 
 
