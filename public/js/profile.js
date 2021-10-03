@@ -1,8 +1,8 @@
 
 const delButtonHandler = async (event) => {
   console.log('I clicked here');
-  if (event.target.hasAttribute('data-messageId')) {
-    const id = event.target.getAttribute('data-messageId');
+  if (event.target.hasAttribute('data-remindrId')) {
+    const id = event.target.getAttribute('data-remindrId');
 
     let confirmDel = confirm("Are you sure you want to delete this Remindr?");
 
@@ -23,6 +23,20 @@ const delButtonHandler = async (event) => {
   }
 };
 
+const editButtonHandler = async (event) => {
+  if (event.target.hasAttribute('data-remindrId')) {
+    const id = event.target.getAttribute('data-remindrId');
+
+    console.log('I clicked');
+    
+    document.location.replace(`/message/edit/${id}`);
+  };
+}
+
 document
-  .querySelector('.delete-message')
+  .querySelector('.delete-remindr')
   .addEventListener('click', delButtonHandler);
+
+document
+  .querySelector('.edit-remindr')
+  .addEventListener('click', editButtonHandler);
