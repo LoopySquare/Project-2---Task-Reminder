@@ -88,32 +88,4 @@ router.post('/logout', (req, res) => {
   }
 });
 
-
-router.put('/api/message/:message_id', async (req, res) => {
-    try {
-        const user = auth.current.user
-
-        // update data
-        user.firstName = request.input('first name')
-        user.lastName = request.input ('last name')
-        user.email = request.input('email')
-        user.phone = request.input ('email')
-        
-        await user.save()
-
-        return response.json({
-            status: 'success',
-            message: 'Profile updated!',
-            data: user
-        })
-    
-      } catch (error) {
-        return response.status(400).json({
-            status: 'error',
-            message: 'There was an error updating your profile :/',
-        })
-    }
-})
-
-
 module.exports = router;
