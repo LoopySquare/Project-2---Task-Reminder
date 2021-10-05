@@ -23,7 +23,9 @@
     "mysql2": "^2.3.0",
     "node-cron": "^3.0.0",
     "node-fetch": "^2.6.5",
-    "sequelize": "^6.3.5"
+    "nodemailer": "^6.6.5",
+    "sequelize": "^6.3.5",
+    "util": "^0.12.4"
   },
   "devDependencies": {
     "eslint": "^7.12.1",
