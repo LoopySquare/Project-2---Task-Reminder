@@ -1,6 +1,9 @@
 const router = require('express').Router();
-const { Message } = require('../../models');
+const { Message, User } = require('../../models');
 const withAuth = require('../../utils/auth');
+const writeToFile = require('../../utils/fsUtils');
+const packageName = require('../../exporter/jsonExport/remindrExport.json');
+
 
 router.get('/:id', withAuth, async (req, res) => {
   try {
@@ -10,7 +13,7 @@ router.get('/:id', withAuth, async (req, res) => {
       },
     })
 
-    res.status(200).json(messageData);
+   res.status(200).json(messageData);
 
   } catch (err) {
     console.log(err);
@@ -18,6 +21,33 @@ router.get('/:id', withAuth, async (req, res) => {
   }
 });
 
+
+router.post('/export', async (req, res) => {
+  try{
+    const messageData = await Message.findAll({
+      attributes: ['event_name', 'content'],
+      include: [
+        {
+          model: User,
+          attributes: ['first_name', 'last_name', 'email'],
+        },
+      ],
+      where:{
+        send_date: req.body.current_date,
+        // send_time: req.body.current_time,
+        am_pm: req.body.am_pm,
+      }
+    });
+
+    writeToFile(messageData);
+
+    res.status(200).json(messageData);
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 
 router.post('/', withAuth, async (req, res) => {
