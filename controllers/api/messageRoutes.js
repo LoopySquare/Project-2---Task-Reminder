@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const { Message, User } = require('../../models');
 const withAuth = require('../../utils/auth');
-const writeToFile = require('../../utils/fsUtils');
-const packageName = require('../../exporter/jsonExport/remindrExport.json');
+const { writeToFile } = require('../../utils/fsUtils');
 
 
 router.get('/:id', withAuth, async (req, res) => {
