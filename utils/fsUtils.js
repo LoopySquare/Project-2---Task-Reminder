@@ -6,9 +6,10 @@ const fs = require('fs');
  *  @param {object} content The content you want to write to the file.
  *  @returns {void} Nothing
  */
-const writeToFile = (destination, content) =>
-  fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
-    err ? console.error(err) : console.info(`\nData written to ${destination}`)
+
+const writeToFile = (content) =>
+  fs.writeFile('./exporter/jsonExport/remindrExport.json', JSON.stringify(content, null, 4), (err) =>
+    err ? console.error(err) : console.info(``)
   );
 
 module.exports = writeToFile;
