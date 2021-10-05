@@ -1,20 +1,21 @@
-const sql = require('../db/query_lib');
-const cTable = require("console.table");
-const dateTime = require('../utils/getDateTime')
-const writeToFile = require('../utils/fsUtils');
+const dateTime = require('../utils/getDateTime');
+const fetch = require('node-fetch');
+require('dotenv').config();
 
-function sleep(ms) {
-  return new Promise((resolve) => { setTimeout(resolve, ms) })
+const exporter = async () => {
+
+  const timeObj = dateTime();
+
+  const {current_date, current_time, am_pm} = timeObj;
+
+  if (current_date && current_time && am_pm) {
+    // Send a POST request to the API endpoint
+    const response = await fetch(`http://localhost:3001/api/messages/export`, {
+      method: 'POST',
+      body: JSON.stringify({ current_date, am_pm }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 }
 
-const exportMessages = async () => {
-
-  const results = await sql.exportMessages(dateTime())
-
-  writeToFile('./jsonExport/remindrExport.json', results[0])
-
-  await sleep(1000)
-  process.exit(1)
-}
-
-exportMessages();
+exporter();
