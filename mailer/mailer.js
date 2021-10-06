@@ -1,12 +1,12 @@
 const nodemailer = require('nodemailer');
-require('dotenv').config();
+require('dotenv').config({path: "../.env"});
 const { readFromFile } = require('../utils/fsUtils');
 
-const main = async () => {
+const mailer = async () => {
 
-  const userData = await readFromFile('../exporter/jsonExport/remindrExport.json')
+  const userData = await readFromFile('../exporter/jsonExport/remindrExport.json');
   
-  const parsedData = await JSON.parse(userData)
+  const parsedData = await JSON.parse(userData);
   
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
@@ -37,4 +37,4 @@ const main = async () => {
   }
 }
 
-main()
+module.exports = mailer;
