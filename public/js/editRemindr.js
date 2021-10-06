@@ -16,7 +16,6 @@ const saveButtonHandler = async (event) => {
 
   const id = event.target.getAttribute('data-remindrId');
 
-
   // Collect values from the login form
   const event_name = document.querySelector('#event_name').value.trim();
   const description = document.querySelector('#description').value.trim();
