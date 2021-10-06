@@ -43,17 +43,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 cron.schedule('*/15 * * * *', async () => {
-  console.log('Starting Remindr Send');
   // Export Data from DB to JSON
   await remindrExporter();
-  // sleep for 30 seconds
-  await sleep(30000);
   // Send Remindrs
-  console.log('Sending Emails');
   await sendRemindrs();
-  // sleep for 30 seconds
-  await sleep(30000);
-  console.log('Ending Remindr Send');
 
 });
 
