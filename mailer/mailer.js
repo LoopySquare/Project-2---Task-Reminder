@@ -7,8 +7,6 @@ const main = async () => {
   const userData = await readFromFile('../exporter/jsonExport/remindrExport.json')
   
   const parsedData = await JSON.parse(userData)
-
-    // const testAccount = await nodemailer.createTestAccount();
   
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
@@ -29,7 +27,7 @@ const main = async () => {
     const message = parsedData[i].content;
 
     let info = await transporter.sendMail({
-      from: `"Remindr App" <nathan.ehrlich2621@gmail.com>`, // sender address
+      from: `"Remindr App" <remindr.notification@gmail.com>`, // sender address
       to: `${toEmail}`, // list of receivers
       subject: `${event}`, // Subject line
       text: "Subject Text", // plain text body
