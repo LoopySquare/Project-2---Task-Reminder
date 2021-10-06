@@ -1,25 +1,26 @@
+const path = require('path');
 const nodemailer = require('nodemailer');
 require('dotenv').config({path: "../.env"});
 const { readFromFile } = require('../utils/fsUtils');
 
-const mailer = async () => {
+const sendRemindrs = async () => {
 
-  const userData = await readFromFile('../exporter/jsonExport/remindrExport.json');
+  const userData = await readFromFile(path.join(__dirname, '../exporter/jsonExport/remindrExport.json'));
   
   const parsedData = await JSON.parse(userData);
   
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        type: 'OAuth2',
-        user: process.env.MAIL_USERNAME,
-        pass: process.env.MAIL_PASSWORD,
-        clientId: process.env.OAUTH_CLIENTID,
-        clientSecret: process.env.OAUTH_CLIENT_SECRET,
-        refreshToken: process.env.OAUTH_REFRESH_TOKEN
-      },
-    });
+  // create reusable transporter object using the default SMTP transport
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      type: 'OAuth2',
+      user: process.env.MAIL_USERNAME,
+      pass: process.env.MAIL_PASSWORD,
+      clientId: process.env.OAUTH_CLIENTID,
+      clientSecret: process.env.OAUTH_CLIENT_SECRET,
+      refreshToken: process.env.OAUTH_REFRESH_TOKEN
+    },
+  });
 
   for (let i = 0; i < parsedData.length; i++) {
     const event = parsedData[i].event_name;
@@ -37,4 +38,4 @@ const mailer = async () => {
   }
 }
 
-module.exports = mailer;
+module.exports = sendRemindrs;
