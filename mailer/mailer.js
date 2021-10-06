@@ -8,7 +8,7 @@ const sendRemindrs = async () => {
   const userData = await readFromFile(path.join(__dirname, '../exporter/jsonExport/remindrExport.json'));
   
   const parsedData = await JSON.parse(userData);
-  
+
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -22,20 +22,27 @@ const sendRemindrs = async () => {
     },
   });
 
-  for (let i = 0; i < parsedData.length; i++) {
-    const event = parsedData[i].event_name;
-    const toEmail = parsedData[i].user.email;
-    const message = parsedData[i].content;
+  if(parsedData == ''){
+    
+    return;
 
-    let info = await transporter.sendMail({
-      from: `"Remindr App" <remindr.notification@gmail.com>`, // sender address
-      to: `${toEmail}`, // list of receivers
-      subject: `${event}`, // Subject line
-      text: "Subject Text", // plain text body
-      html: `<b>${message}</b>`, // html body
-    });
-
+  } else {  
+    
+      for (let i = 0; i < parsedData.length; i++) {
+      const event = parsedData[i].event_name;
+      const toEmail = parsedData[i].user.email;
+      const message = parsedData[i].content;
+  
+      let info = await transporter.sendMail({
+        from: `"Remindr App" <remindr.notification@gmail.com>`, // sender address
+        to: `${toEmail}`, // list of receivers
+        subject: `${event}`, // Subject line
+        text: "Subject Text", // plain text body
+        html: `<b>${message}</b>`, // html body
+      });
+    }
   }
+
 }
 
 module.exports = sendRemindrs;
