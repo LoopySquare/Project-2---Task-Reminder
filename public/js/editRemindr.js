@@ -14,11 +14,8 @@ if(am_pm == "AM"){
 const saveButtonHandler = async (event) => {
   event.preventDefault();
 
-  console.log("i clicked this");
-
   const id = event.target.getAttribute('data-remindrId');
 
-  console.log(id);
 
   // Collect values from the login form
   const event_name = document.querySelector('#event_name').value.trim();

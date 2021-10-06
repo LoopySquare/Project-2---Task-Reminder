@@ -16,18 +16,6 @@ const writeToFile = (content) =>
     err ? console.error(err) : console.info(``)
   );
 
-// const readFromFile = () =>{
-
-//   fs.readFile('../exporter/jsonExport/remindrExport.json', 'utf8', (err, data) => {
-//     if (err) {
-//         console.error(err);
-//     } else {
-//       // console.log(JSON.parse(data));
-//        return JSON.parse(data);
-//     }
-//   })
-
-// }
 
 const readFromFile = util.promisify(fs.readFile);
 
