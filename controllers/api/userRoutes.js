@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { RuleTester } = require('eslint');
 const { User, Message } = require('../../models');
 const withAuth = require('../../utils/auth');
 
