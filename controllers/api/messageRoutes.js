@@ -33,14 +33,12 @@ router.post('/export', async (req, res) => {
       ],
       where:{
         send_date: req.body.current_date,
-        // send_time: req.body.current_time,
+        send_time: req.body.current_time,
         am_pm: req.body.am_pm,
       }
     });
 
     writeToFile(messageData);
-
-    res.status(200).json(messageData);
 
   } catch (err) {
     console.log(err);
@@ -56,8 +54,6 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
-    console.log(newMessage);
-
     res.status(200).json(newMessage);
   } catch (err) {
     res.status(400).json(err);
@@ -67,8 +63,6 @@ router.post('/', withAuth, async (req, res) => {
 router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try {
-
-    console.log(req.params.id);
     const messageData = await Message.update({ 
       event_name: req.body.event_name ,
       description: req.body.description ,
@@ -80,7 +74,7 @@ router.put('/:id', async (req, res) => {
     {
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id
+        user_id: req.session.user_id
       }
     })
     res.status(200).json(messageData);
