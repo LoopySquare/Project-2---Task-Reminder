@@ -22,7 +22,6 @@ const createFormHandler = async (event) => {
   }
   
   if(!validEmail){
-    
     blankPass();
     return;
   } 
@@ -88,7 +87,7 @@ const validatePass = async (pass, confirmPass) => {
   }
 
   if(pass.length < 8){
-
+    swal.fire("Password must be atleast 8 Characters");
     document.getElementById("password").classList.add('is-danger');
     document.getElementById("passLength").classList.add('is-hidden');
     document.getElementById("passLengthError").classList.remove('is-hidden');
@@ -96,6 +95,7 @@ const validatePass = async (pass, confirmPass) => {
   }
 
   if(pass !== confirmPass) {
+    swal.fire("Passwords do not match!");
     document.getElementById("confirm-password").classList.add('is-danger');
     document.getElementById("no-match").classList.remove('is-hidden');
     
@@ -117,6 +117,7 @@ const validateEmail = async (email) => {
   let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   if(!email.match(mailFormat)) {
+    swal.fire("Please Enter a valid Email!");
     document.getElementById("email").classList.add('is-danger');
     document.getElementById("invalidEmail").classList.remove('is-hidden');
 

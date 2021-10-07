@@ -15,13 +15,14 @@ const loginFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    console.log(reponse);
+    console.log(response);
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
       document.location.replace('/profile');
     } else {
-      document.getElementById("").classList.add('MyClass');
+      swal.fire("Incorrect email or password, please try again");
+      document.querySelector('#password-login').value = ""
     }
   }
 };
