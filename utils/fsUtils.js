@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const util = require('util')
 
 // Promise version of fs.readFile
@@ -11,23 +12,15 @@ const util = require('util')
  *  @returns {void} Nothing
  */
 
+// const test = path.join(__dirname, '../exporter/jsonExport/remindrExport.json')
+
+// console.log(test);
+
 const writeToFile = (content) =>
-  fs.writeFile('./exporter/jsonExport/remindrExport.json', JSON.stringify(content, null, 4), (err) =>
+  fs.writeFile(path.join(__dirname, '../exporter/jsonExport/remindrExport.json'), JSON.stringify(content, null, 4), (err) =>
     err ? console.error(err) : console.info(``)
   );
 
-// const readFromFile = () =>{
-
-//   fs.readFile('../exporter/jsonExport/remindrExport.json', 'utf8', (err, data) => {
-//     if (err) {
-//         console.error(err);
-//     } else {
-//       // console.log(JSON.parse(data));
-//        return JSON.parse(data);
-//     }
-//   })
-
-// }
 
 const readFromFile = util.promisify(fs.readFile);
 

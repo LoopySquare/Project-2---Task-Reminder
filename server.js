@@ -5,6 +5,9 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const cron = require('node-cron');
+const remindrExporter = require('./exporter/exportRemindr');
+const sleep = require('./utils/sleep');
+const sendRemindrs = require('./mailer/mailer');
 
 
 const sequelize = require('./config/connection');
@@ -39,8 +42,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-cron.schedule('*/2 * * * *', () => {
-  console.log('running a task every minute');
+cron.schedule('*/15 * * * *', async () => {
+  // Export Data from DB to JSON
+  await remindrExporter();
+  // Send Remindrs
+  await sendRemindrs();
+
 });
 
 sequelize.sync({ force: false }).then(() => {
