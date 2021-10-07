@@ -5,22 +5,28 @@ const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-remindrId')) {
     const id = event.target.getAttribute('data-remindrId');
 
-    let confirmDel = confirm("Are you sure you want to delete this Remindr?");
-
-    if(confirmDel){
-      const response = await fetch(`/api/messages/${id}`, {
-        method: 'DELETE',
-      });
-  
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert('Failed to delete project');
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This Remindr will be lost, and cannot be recovered',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete this Remindr!',
+      cancelButtonText: 'No, keep this Remindr'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const response = fetch(`/api/messages/${id}`, {
+          method: 'DELETE',
+        });
+    
+        if (response.ok) {
+          document.location.replace('/profile');
+        }
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        return;
       }
-    } else {
-      document.location.replace('/profile');
-    }
-
+    })
   }
 };
 
@@ -29,7 +35,6 @@ const editButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-remindrId')) {
     const id = event.target.getAttribute('data-remindrId');
 
-    console.log('I clicked');
     
     document.location.replace(`/message/edit/${id}`);
   };
@@ -38,6 +43,12 @@ const editButtonHandler = async (event) => {
 const newButtonHandler = async () => {
   
   document.location.replace(`/message/add/`);
+
+};
+
+const editAccountHandler = async () => {
+  
+  document.location.replace(`/account/edit/`);
 
 };
 
@@ -57,3 +68,7 @@ $(document).ready(function () {
 document
   .querySelector('#new-remindr')
   .addEventListener('click', newButtonHandler);
+
+document
+  .querySelector('#edit-account')
+  .addEventListener('click', editAccountHandler);

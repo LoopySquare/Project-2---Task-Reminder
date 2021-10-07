@@ -40,7 +40,6 @@ router.get('/profile', withAuth, async (req, res) => {
     res.render('profile', { user, remindrs });
 
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -59,7 +58,6 @@ router.get('/message/edit/:id', withAuth, async (req, res) => {
     res.render('editRemindr', { remindrs } )
 
   } catch (err) {
-    console.log(err);
     res.status(400).json(err);
   }
 
@@ -72,7 +70,44 @@ router.get('/message/add', withAuth, async (req, res) => {
     res.render('addRemindr')
 
   } catch (err) {
-    console.log(err);
+    res.status(404).json(err);
+  }
+
+});
+
+router.get('/account/edit', withAuth, async (req, res) => {
+
+  try {
+
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] }, 
+    });
+
+    const user = userData.get({ plain: true });
+
+    console.log(user);
+
+    res.render('editAccount', { user })
+
+  } catch (err) {
+    res.status(404).json(err);
+  }
+
+});
+
+router.get('/account/password/update', withAuth, async (req, res) => {
+
+  try {
+
+    const userData = await User.findByPk(req.session.user_id);
+
+    const user = userData.get({ plain: true });
+
+    console.log(user);
+
+    res.render('updatePassword', { user })
+
+  } catch (err) {
     res.status(404).json(err);
   }
 
