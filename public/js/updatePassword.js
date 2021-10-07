@@ -1,13 +1,12 @@
 const createFormHandler = async (event) => {
   event.preventDefault();
 
-  const id = event.target.getAttribute('data-editId');
-
   // Collect values from the login form
   const currPassword = document.querySelector('#current-password').value.trim();
   const newPassword = document.querySelector('#new-password').value.trim();
   const confirmPassword = document.querySelector('#confirm-password').value.trim();
 
+  console.log(document.querySelector('#current-password').value.trim());
 
   const passMatch = await validatePass(currPassword, newPassword, confirmPassword);
 
@@ -19,16 +18,32 @@ const createFormHandler = async (event) => {
   
   if (currPassword && newPassword && confirmPassword) {
 
-    const response = await fetch(`/password/update/${id}`, {
-      method: 'POST',
+    const response = await fetch(`/api/users/password/update/`, {
+      method: 'PUT',
       body: JSON.stringify({ currPassword, newPassword }),
       headers: { 'Content-Type': 'application/json' },
     });
 
+    console.log(response);
+
     if (response.ok) {
-      document.location.replace('/profile');
+      Swal.fire({
+        title: 'Congradulations!',
+        text: 'Your Password has been updated!',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonText: 'Thank you!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.location.replace(`/profile`);
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+        } 
+      })
     } else {
-      alert(response.statusText);
+      swal.fire("Current Password Does not match what's on record");
+      document.querySelector('#current-password').focus();
+      document.getElementById("current-password").classList.add('is-danger');
     }
   }
 };
