@@ -6,7 +6,6 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const cron = require('node-cron');
 const remindrExporter = require('./exporter/exportRemindr');
-const sleep = require('./utils/sleep');
 const sendRemindrs = require('./mailer/mailer');
 
 
@@ -42,13 +41,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-cron.schedule('*/15 * * * *', async () => {
-  // Export Data from DB to JSON
-  await remindrExporter();
-  // Send Remindrs
-  await sendRemindrs();
+// Used only for testing Local
+// cron.schedule('*/1 * * * *', async () => {
+//   // Export Data from DB to JSON
+//   await remindrExporter();
+//   // Send Remindrs
+//   await sendRemindrs();
 
-});
+// });
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
