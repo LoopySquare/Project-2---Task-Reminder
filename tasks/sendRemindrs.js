@@ -1,5 +1,5 @@
 const remindrExporter = require('../exporter/exportRemindr');
-const remindrMailer = require('../mailer/mailer');
+const remindrMailer = require('../mailer/sendRemindrEmail');
 
 // This task runs the Remindr Exporter then the Remindr Mailer
 const sendRemindr = async () => {
