@@ -2,13 +2,18 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {{#user }}
+<div class="header-profile has-text-centered">
+  <div class="brand">
+    <img src="/img/remindr logo.png" alt="main-logo" class="remindrLogo">
+  </div>
+</div>
 <div class="container">
   <div class="card">
     <div class="card-content">
       <div class="media">
         <div class="media-left">
           <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            <img src="/img/default profile 1.jpg" alt="Placeholder image">
           </figure>
         </div>
         <div class="media-content">
@@ -17,66 +22,65 @@
         </div>
       </div>
       <div class="card-content">
-        <p class="subtitle">
-          a place for a bio?
+        <p class="subtitle has-text-centered">
+          Welcome to your new Remindr account! You are just a few clicks away from setting up your first Remindr. To get started, click on the 'New Remindr' button. Fill out the form and save your new Remindr by clicking "Create Remindr". And that's it! Your Remindr is all set up and you will receive a notification for your specified date and time. To remove this message, simply change your bio in the Edit Account settings. You will also find other customization options in the Account settings to make your profile unique to you!
         </p>
       </div>
-      <footer class="card-footer">
+    </div>
+    <footer class="card-footer">
         <p class="card-footer-item">
-          <span id="edit-account"><a href="#">Edit Account</a></span>
+          <span id="edit-account"><a href="#" class="button is-primary">Edit Account</a></span>
         </p>
         <p class="card-footer-item">
-          <span id="new-remindr"><a href="#">New Remindr</a></span>
+          <span id="new-remindr"><a href="#" class="button is-primary">New Remindr</a></span>
         </p>
         <p class="card-footer-item">
-          <span id="logout"><a href="#">Logout</a></span>
+          <span id="logout"><a href="#" class="button is-primary">Logout</a></span>
         </p>
       </footer>
-    </div>
   </div>
 </div>
 {{/user }}
 
 <div class="container">
-  <table class="table is-hoverable is-fullwidth has-text-centered">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Remindr Title</th>
-        <th>Description</th>
-        <th>Alert Day(s)</th>
-        <th>Alert Time</th>
-        <th>Edit Remindr</th>
-        <th>Delete Remindr</th>
-      </tr>
-    </thead>
-    <tfoot>
-      <tr>
-        <th>ID</th>
-        <th>Remindr Title</th>
-        <th>Description</th>
-        <th>Alert Day(s)</th>
-        <th>Alert Time</th>
-        <th>Edit Remindr</th>
-        <th>Delete Remindr</th>
-      </tr>
-    </tfoot>
-    {{#if remindrs.length}}
-    <tbody>
-      {{#each remindrs as |remindr|}}
-      <tr>
-        <th>{{remindr.id}}</th>
-          <td><a href="link to modal?" title="Sample Title">{{remindr.event_name}}</a></td>
-          <td><a href="link to modal?" title="Sample Title">{{remindr.description}}</a></td>
-          <td><p class="remindr-date">{{remindr.send_date}}</p></td>
-          <td>{{remindr.send_time}} {{remindr.am_pm}}</td>
-          <td><a data-remindrId="{{remindr.id}}" class="button is-info edit-remindr" title="Edit Remindr"><i class="fas fa-edit"></i></a></td>
-          <td><a data-remindrId="{{remindr.id}}" class="button is-danger delete-remindr" title="Sample Title"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-      </tr>
-        {{/each}}
-    </tbody>
-    {{/if}}
-  </table>
+  <div class="table-container">
+    <table class="table is-hoverable is-bordered is-fullwidth is-striped has-text-centered mb-6">
+      <thead>
+        <tr class="table-head">
+          <th class="table-headings has-text-black is-size-4">Remindr Title</th>
+          <th class="table-headings has-text-black is-size-4">Description</th>
+          <th class="table-headings has-text-black is-size-4">Alert Day</th>
+          <th class="table-headings has-text-black is-size-4">Alert Time</th>
+          <th class="table-headings has-text-black is-size-4">Edit Remindr</th>
+          <th class="table-headings has-text-black is-size-4">Delete Remindr</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr class="table-foot">
+          <th class="table-headings has-text-black is-size-4">Remindr Title</th>
+          <th class="table-headings has-text-black is-size-4">Description</th>
+          <th class="table-headings has-text-black is-size-4">Alert Day</th>
+          <th class="table-headings has-text-black is-size-4">Alert Time</th>
+          <th class="table-headings has-text-black is-size-4">Edit Remindr</th>
+          <th class="table-headings has-text-black is-size-4">Delete Remindr</th>
+        </tr>
+      </tfoot>
+      {{#if remindrs.length}}
+      <tbody>
+        {{#each remindrs as |remindr|}}
+        <tr>
+            <td class="table-title has-text-primary"><p>{{remindr.event_name}}</p></td>
+            <td class="table-description has-text-dark"><p>{{remindr.description}}</p></td>
+            <td><p class="remindr-date has-text-dark">{{remindr.send_date}}</p></td>
+            <td class="table-time has-text-dark">{{remindr.send_time}} {{remindr.am_pm}}</td>
+            <td><a data-remindrId="{{remindr.id}}" class="button is-info edit-remindr" title="Edit Remindr"><i class="fas fa-edit"></i></a></td>
+            <td><a data-remindrId="{{remindr.id}}" class="button is-danger delete-remindr" title="Sample Title"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+        </tr>
+          {{/each}}
+      </tbody>
+      {{/if}}
+    </table>
+  </div>
 </div>
 
 <script src="/js/logout.js"></script>

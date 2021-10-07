@@ -28,7 +28,7 @@ const createFormHandler = async (event) => {
 
     if (response.ok) {
       Swal.fire({
-        title: 'Congradulations!',
+        title: 'Congratulations!',
         text: 'Your Password has been updated!',
         icon: 'success',
         showCancelButton: true,

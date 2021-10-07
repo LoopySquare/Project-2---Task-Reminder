@@ -1,8 +1,80 @@
 {{#user }}
 <section class="hero is-fullheight">
+  <div class="header-profile has-text-centered">
+    <div class="brand">
+      <img src="/img/remindr logo.png" alt="main-logo" class="remindrLogo">
+    </div>
+  </div>
+
   <div class="hero-body container">
     <div class="card pr-4 pl-4">
       <div class="card-content">
+
+        <div class="field">
+          <label class="label">Profile Picture</label>
+          <figure class="image is-128x128 is-inline-block">
+            <img src="/img/default profile 1.jpg" alt="Placeholder image">
+          </figure>
+          <div class="control mt-4">
+            <div class="select">
+              <select>
+              <option>Default profile</option>
+              <option>option 2</option>
+              <option>option 3</option>
+              <option>option 4</option>
+              <option>option 5</option>
+              <option>option 6</option>
+              <option>option 7</option>
+              </select>
+            </div>
+          </div>
+          <form action="/action_page.php" class="has-text-centered mt-2">
+            <input type="file" id="myFile" name="filename">
+          </form>
+        </div>
+
+        <div class="field">
+          <label class="label">Font</label>
+          <div class="control mt-4">
+            <div class="select">
+              <select>
+              <option>Default font</option>
+              <option>option 2</option>
+              <option>option 3</option>
+              <option>option 4</option>
+              <option>option 5</option>
+              <option>option 6</option>
+              <option>option 7</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Theme</label>
+          <div class="control mt-4">
+            <div class="select">
+              <select>
+              <option>Default Theme</option>
+              <option>Catch 'em All</option>
+              <option>Poly Want a Cracker</option>
+              <option>80's Baby</option>
+              <option>Splat</option>
+              <option>Peace and Love</option>
+              <option>Plain (Dark Mode)</option>
+              <option>Plain (Light Mode)</option>
+              <option>NYAN FOREVER</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Bio</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Textarea">Welcome to your new Remindr account! You are just a few clicks away from setting up your first Remindr. To get started, click on the 'New Remindr' button. Fill out the form and save your new Remindr by clicking "Create Remindr". And that's it! Your Remindr is all set up and you will receive a notification for your specified date and time. To remove this message, simply change your bio in the Edit Account settings. You will also find other customization options in the Account settings to make your profile unique to you!</textarea>
+          </div>
+        </div>
 
         <div class="field">
           <label class="label">Email <span style="color: red; font-style: italic; font-weight: 400">(Cannot Be Changed)</span></label>

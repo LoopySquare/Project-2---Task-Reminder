@@ -10,12 +10,16 @@ p {
   line-height: 1.5;
 }
 
+a { 
+  color: inherit; 
+} 
+
 .form-container{
   margin: 20px;
   max-width: 1000px;
   padding: 75px;
   border-radius: 25px;
-  background-color: rgba(255, 255, 255, 0.7)
+  background-color: rgba(255, 255, 255, 0.8)
 }
 
 .container{
@@ -25,6 +29,11 @@ p {
 .header{
   background-color: black;
   padding: 40px;
+}
+
+.header-profile{
+  background-color: black;
+  padding-top: 30px;
 }
 
 .logo{
@@ -59,4 +68,44 @@ p {
 
 .swal2-styled.swal2-confirm:focus{
   box-shadow: 0 0 0 3px rgb(62 142 208 / 50%) !important;
+}
+
+.card{
+  margin-top: 40px;
+}
+
+.table-head{
+  background-color: #efefef
+}
+
+.table-foot{
+  background-color: #efefef
+}
+
+.table-title{
+  color: black;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.3rem;
+}
+
+.table-description{
+  color: black;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.1rem;
+}
+
+.remindr-date{
+  color: black;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.3rem;
+}
+
+.table-time{
+  color: black;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.3rem;
+}
+
+.table-headings{
+  font-family: 'Ubuntu', sans-serif;
 }
