@@ -43,6 +43,10 @@ const resetPasswordFormHandler = async (event) => {
       }
     }
   };
+
+  const cancelFormHandler = async () => {
+    document.location.replace('/');
+  }
   
   // VALIDATE PASSWORD AND CONFIRM PASSWORD ARE THE SAME AND PROPER LEN
   const validatePass = async (newPass, confirmPass) => {
@@ -76,3 +80,7 @@ const resetPasswordFormHandler = async (event) => {
     .querySelector('#update-password')
     .addEventListener('click', resetPasswordFormHandler);
   
+
+  document
+    .querySelector('#cancel')
+    .addEventListener('click', cancelFormHandler);
