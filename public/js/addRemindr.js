@@ -22,19 +22,18 @@ const createButtonHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      Swal.fire({
+      const result = await Swal.fire({
         title: 'Congradulations!',
         text: 'You successfully added a new Remindr!',
         icon: 'success',
         showCancelButton: true,
         confirmButtonText: 'Thank you!',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          document.location.replace(`/profile`);
-        // For more information about handling dismissals please visit
-        // https://sweetalert2.github.io/#handling-dismissals
-        } 
       })
+
+      if (result.isConfirmed) {
+        document.location.replace(`/profile`);
+      } 
+
     } else {
       alert(response.statusText);
     }
@@ -44,22 +43,20 @@ const createButtonHandler = async (event) => {
 const cancelButtonHandler = async (event) => {
   event.preventDefault();
 
-  Swal.fire({
+  const result = await Swal.fire({
     title: 'Are you sure?',
     text: 'All data will be lost, and not recoverable',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonText: 'Yes, cancel!',
     cancelButtonText: 'No, I will complete'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      document.location.replace(`/profile`);
-    // For more information about handling dismissals please visit
-    // https://sweetalert2.github.io/#handling-dismissals
-    } else if (result.dismiss === Swal.DismissReason.cancel) {
-      return
-    }
   })
+
+  if (result.isConfirmed) {
+    document.location.replace(`/profile`);
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    return
+  }
   
 };
 
