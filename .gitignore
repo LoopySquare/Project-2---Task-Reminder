@@ -2,4 +2,3 @@ node_modules
 .env
 .DS_Store
 public/css/playground.css
-remindrExport.json
