@@ -13,6 +13,15 @@
 
 <body>
     <section class="hero is-fullheight">
+        <div class="header has-text-centered">
+            <h1 class="logo">
+              REMINDER LOGO
+            </h1>
+            <h2 class="description has-text-centered">
+              In order to create and save your own Remindrs, you must first create an account. The process is quick and painless, simply fill out the form bellow to create your new account. <br>Please ensure the input contact information is correct otherwise you will not receive your Remindr notification!
+            </h2>
+          </div>
+
         <div class="hero-body container">
             <div class="card pr-4 pl-4">
                 <div class="card-content">
@@ -37,53 +46,48 @@
                     </div>
 
                     <div class="field">
-                        <label class="label">Username</label>
-                        <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="username">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        </div>
-                    </div>
-
-                    <div class="field">
                         <label class="label">Password</label>
-                        <p class="control has-icons-left">
+                        <div class="control has-icons-left">
                         <input class="input" type="password" placeholder="Password">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                         </span>
-                        </p>
+                        </div>
+                        <p class="pass has-text-weight-bold">*Password must be 8 characters long</p>
+
                     </div>
 
                     <div class="field">
                         <label class="label">Confirm Password</label>
-                        <p class="control has-icons-left">
-                        <input class="input" type="password" placeholder="Password">
+                        <div class="control has-icons-left">
+                        <input class="input is-danger" type="password" placeholder="Password">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                         </span>
-                        </p>
+                    </div>
+                    <p class="help is-danger is-size-6 validate has-text-weight-bold">Passwords do not match</p>
                     </div>
 
                     <div class="field">
                         <label class="label">Email</label>
                         <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="email" placeholder="example@email.com">
+                        <input class="input is-danger" type="email" placeholder="example@email.com">
                         <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
                         </span>
                         </div>
+                        <p class="help is-danger is-size-6 validate has-text-weight-bold">Not a valid email addreses</p>
                     </div>
 
                     <div class="field">
                         <label class="label">Phone Number</label>
                         <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="123-456-7890">
+                        <input class="input is-danger" type="text" placeholder="123-456-7890">
                         <span class="icon is-small is-left">
                             <i class="fas fa-phone"></i>
                         </span>
                         </div>
+                        <p class="help is-danger is-size-6 validate has-text-weight-bold">Not a valid phone number</p>
                     </div>
 
                     <div class="control pt-5 pb-2 has-text-centered">

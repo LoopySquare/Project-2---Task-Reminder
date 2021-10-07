@@ -22,7 +22,7 @@ const createFormHandler = async (event) => {
   }
   
   if(!validEmail){
-    document.querySelector('#email').focus();
+    
     blankPass();
     return;
   } 
@@ -88,14 +88,24 @@ const validatePass = async (pass, confirmPass) => {
   }
 
   if(pass.length < 8){
-    swal.fire("Password must be more than 8 Characters");
+
+    document.getElementById("password").classList.add('is-danger');
+    document.getElementById("passLength").classList.add('is-hidden');
+    document.getElementById("passLengthError").classList.remove('is-hidden');
     return false;
   }
 
   if(pass !== confirmPass) {
-    swal.fire("Passwords did not match");
+    document.getElementById("confirm-password").classList.add('is-danger');
+    document.getElementById("no-match").classList.remove('is-hidden');
+    
     return false;
   } else {
+    document.getElementById("password").classList.remove('is-danger');
+    document.getElementById("passLength").classList.remove('is-hidden');
+    document.getElementById("passLengthError").classList.add('is-hidden');
+    document.getElementById("confirm-password").classList.remove('is-danger');
+    document.getElementById("no-match").classList.add('is-hidden');
     return true;
   }
 
@@ -107,9 +117,13 @@ const validateEmail = async (email) => {
   let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   if(!email.match(mailFormat)) {
-    swal.fire("You have entered an invalid email address!")
+    document.getElementById("email").classList.add('is-danger');
+    document.getElementById("invalidEmail").classList.remove('is-hidden');
+
      return false;
   } else {
+    document.getElementById("email").classList.remove('is-danger');
+    document.getElementById("invalidEmail").classList.add('is-hidden');
     return true;
   }
 
