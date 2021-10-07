@@ -18,6 +18,7 @@ router.get('/', withAuth, async (req, res) => {
 // Create New User Account
 router.post('/create', async (req, res) => {
   try {
+
     const userData = await User.create(req.body);
 
     req.session.save(() => {
