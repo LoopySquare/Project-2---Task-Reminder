@@ -25,6 +25,8 @@
     "node-fetch": "^2.6.5",
     "nodemailer": "^6.6.5",
     "sequelize": "^6.3.5",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.1.7",
     "util": "^0.12.4"
   },
   "repository": {
