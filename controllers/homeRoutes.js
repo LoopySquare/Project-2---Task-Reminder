@@ -95,6 +95,33 @@ router.get('/account/edit', withAuth, async (req, res) => {
 
 });
 
+router.get('/account/recovery/', async (req, res) => {
+  try {
+    // Pass serialized data and session flag into template
+    res.render('accountRecovery');
+  } catch (err) {
+    res.status(404).json(err);
+  }
+});
+
+router.get('/account/password/reset', async (req, res) => {
+  try {
+
+    const userData = await User.findByPk(req.session.user_id,{
+      attributes: ['email']
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('resetPassword', { user });
+
+  } catch (err) {
+    res.status(404).json(err);
+  }
+
+});
+
+
 router.get('/account/password/update', withAuth, async (req, res) => {
 
   try {
