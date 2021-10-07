@@ -32,13 +32,23 @@ const createButtonHandler = async (event) => {
 const cancelButtonHandler = async (event) => {
   event.preventDefault();
 
-  const cancel = confirm("Are you sure you want to cancel?\n All changes will not be saved.")
-
-  if(cancel){
-    document.location.replace(`/profile`);
-  } else {
-    return;
-  }
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'All data will be lost, and not recoverable',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, cancel!',
+    cancelButtonText: 'No, I will complete'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.location.replace(`/profile`);
+    // For more information about handling dismissals please visit
+    // https://sweetalert2.github.io/#handling-dismissals
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      return
+    }
+  })
+  
 };
 
 document
