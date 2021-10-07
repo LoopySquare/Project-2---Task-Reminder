@@ -22,19 +22,20 @@ const resetPasswordFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        Swal.fire({
+        const result = await Swal.fire({
           title: 'Congradulations!',
           text: 'Your Password has been updated!',
           icon: 'success',
           showCancelButton: true,
           confirmButtonText: 'Thank you!',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            document.location.replace(`/profile`);
-          // For more information about handling dismissals please visit
-          // https://sweetalert2.github.io/#handling-dismissals
-          } 
         })
+        
+        if (result.isConfirmed) {
+          document.location.replace(`/profile`);
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+        } 
+
       } else {
         swal.fire("Current Password Does not match what's on record");
         document.querySelector('#current-password').focus();
