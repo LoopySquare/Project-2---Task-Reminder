@@ -51,13 +51,19 @@ User.init(
   {
     hooks: {
       beforeCreate: async (newUserData) => {
+        console.log('I ran when adding a user!');
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
-      },
+
+        console.log('I am Running');
+        // In this case, we are taking the user's email address, and making all letters lower case before adding it to the database.
+        if (updatedUserData.changed('password')) {
+            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+            return updatedUserData;
+        }
+    },
     },
     sequelize,
     timestamps: false,

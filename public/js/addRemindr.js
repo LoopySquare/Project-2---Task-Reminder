@@ -22,7 +22,19 @@ const createButtonHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      document.location.replace('/profile');
+      Swal.fire({
+        title: 'Congradulations!',
+        text: 'You successfully added a new Remindr!',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonText: 'Thank you!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.location.replace(`/profile`);
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+        } 
+      })
     } else {
       alert(response.statusText);
     }

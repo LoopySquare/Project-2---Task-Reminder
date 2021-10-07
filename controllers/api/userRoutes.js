@@ -31,24 +31,56 @@ router.post('/create', async (req, res) => {
   }
 });
 
+// Recovery Account 
+router.post('/account/recovery/', async (req, res) => {
+  try {
+
+    const userData = await User.findOne({
+      where: { 
+        email: req.body.email 
+      } 
+    });
+
+    console.log(userData);
+
+    if (!userData) {
+      res.status(404).json({ 
+        message: 'No Records Found' 
+      });
+      return;
+   }
+
+   req.session.save(() => {
+    req.session.user_id = userData.id;
+    req.session.logged_in = true;
+    
+    res.json();
+  });
+
+   res.status(200);
+
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
+
 // Edit User Account
-router.put('/account/edit/:id', withAuth, async (req, res) => {
+router.put('/account/edit/', withAuth, async (req, res) => {
   try {
     const userData = await User.update({ 
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      phone: req.body.phone
+      phone: req.body.phone,
     },
     {
       where: {
-        id: req.params.id,
-        // user_id: req.session.user_id
-      }
+        // id: req.params.id,
+        id: req.session.user_id
+      },
     })
 
-    console.log(userData);
-
-    res.status(200).json(userData);
+  res.status(200).json(userData);
   } catch(err) {
     console.log(err);
     res.status(404).json(err);
@@ -56,34 +88,34 @@ router.put('/account/edit/:id', withAuth, async (req, res) => {
 });
 
 // Edit User Account
-router.put('/password/update/:id', withAuth, async (req, res) => {
+router.put('/password/update/', withAuth, async (req, res) => {
   try {
 
-    const passData = await User.findByPk(req.session.user_id, {
-    })
+    if(req.body.currPassword){
+      const passData = await User.findByPk(req.session.user_id)
+
+      const validPassword = passData.checkPassword(req.body.currPassword);
+  
+      if (!validPassword) {
+        res
+          .status(400)
+          .json();
+        return;
+      }
+    }
 
     const userData = await User.update({ 
       password: req.body.newPassword,
     },
     {
       where: {
-        id: req.params.id,
-        // user_id: req.session.user_id
-      }
+        id: req.session.user_id
+      },
+      individualHooks: true
     })
 
-    const validPassword = await userData.checkPassword(req.body.currPassword);
-
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    console.log(userData);
-
     res.status(200).json(userData);
+
   } catch(err) {
     console.log(err);
     res.status(404).json(err);
@@ -114,6 +146,8 @@ router.post('/login', async (req, res) => {
       return;
     }
 
+    console.log(userData);
+
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -127,6 +161,8 @@ router.post('/login', async (req, res) => {
                   } , 
                     message: 'You are now logged in!' });
     });
+
+    res.status(200)
 
   } catch (err) {
     res.status(400).json(err);

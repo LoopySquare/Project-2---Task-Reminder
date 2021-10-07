@@ -2,22 +2,14 @@
 const saveButtonHandler = async (event) => {
   event.preventDefault ();
 
-  const id = event.target.getAttribute('data-editId');
-
-  console.log(id);
-
   // Collect values from the login form
 
   const first_name = document.querySelector('#first-name').value.trim();
   const last_name = document.querySelector('#last-name').value.trim();
   const phone = formatPhone(document.querySelector('#phone').value.trim());
 
-  console.log(phone.length);
-
   const validName = await validateName(first_name, last_name);
   const validPhone = await validatePhone(phone);
-
-  console.log(validPhone);
 
   if(!validName){
     return;
@@ -30,7 +22,7 @@ const saveButtonHandler = async (event) => {
   if (first_name && last_name && phone && validName && validPhone) {
 
     console.log('Sending Fetch');
-    const response = await fetch(`/api/users/account/edit/${id}`, {
+    const response = await fetch(`/api/users/account/edit/`, {
       method: 'PUT',
       body: JSON.stringify({ first_name, last_name, phone }),
       headers: { 'Content-Type': 'application/json' },
@@ -38,7 +30,17 @@ const saveButtonHandler = async (event) => {
     
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-        document.location.replace('/profile');
+      Swal.fire({
+        title: 'Congradulations!',
+        text: 'You successfully updated your Remindr Profile!',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonText: 'Thank you!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.location.replace(`/profile`);
+        } 
+      })
     } else {
       alert(response.statusText);
     }  
