@@ -1,0 +1,42 @@
+<section class="hero is-fullheight">
+  <div class="header has-text-centered">
+    <h1 class="logo">
+      REMINDER LOGO
+    </h1>
+    <h2 class="description has-text-centered">
+      Please Enter your Email to update your password!
+    </h2>
+  </div>
+
+  <div class="hero-body container">
+    <div class="card pr-4 pl-4">
+      <div class="card-content">
+
+        <div class="field">
+          <label class="label">Enter your Account Email</label>
+          <div class="control has-icons-left has-icons-right">
+            <input required id="email" class="input" type="email" placeholder="example@email.com">
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+          </div>
+          <p id="invalidEmail" class="help is-hidden is-danger is-size-6 has-text-weight-bold">Invalid email address</p>
+        </div>
+
+        <div class="control pt-5 pb-2 has-text-centered">
+          <button id='recover-account' class="button is-info is-rounded is-fullwidth">
+            Recover Account
+          </button>
+          <br>
+          <button id='cancel' class="button is-info is-rounded is-fullwidth">
+              Cancel
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/js/accountRecovery.js"></script>
