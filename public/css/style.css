@@ -22,6 +22,32 @@ p {
   margin: auto;
 }
 
+.header{
+  background-color: black;
+  padding: 40px;
+}
+
+.logo{
+  position: relative; bottom: 70px;
+  color: white;
+}
+
+.description{
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.pass{
+  color: lightsteelblue;
+  font-size: .8rem;
+}
+
+.remindrLogo{
+  max-height: 150px;
+  width: auto;
+  position: relative; bottom: 20px;
+}
+
 .swal2-styled.swal2-confirm{
   background-color: #3e8ed0 !important;
 }
@@ -29,3 +55,4 @@ p {
 .swal2-styled.swal2-confirm:focus{
   box-shadow: 0 0 0 3px rgb(62 142 208 / 50%) !important;
 }
+
