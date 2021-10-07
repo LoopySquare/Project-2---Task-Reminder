@@ -1,12 +1,23 @@
+{{#user }}
 <section class="hero is-fullheight">
   <div class="hero-body container">
     <div class="card pr-4 pl-4">
       <div class="card-content">
+
+        <div class="field">
+          <label class="label">Email <span style="color: red; font-style: italic; font-weight: 400">(Cannot Be Changed)</span></label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="example@email.com" value="{{email}}" readonly>
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+          </div>
+        </div>
         
         <div class="field">
           <label class="label">First Name</label>
           <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="First Name" value="{{first_name}}">
+            <input id="first-name" class="input" type="text" placeholder="First Name" value="{{first_name}}">
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
@@ -16,47 +27,18 @@
         <div class="field">
           <label class="label">Last Name</label>
           <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="Last Name" value="{{last_name}}">
+            <input id="last-name" class="input" type="text" placeholder="Last Name" value="{{last_name}}">
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input" type="email" placeholder="example@email.com" value="{{email}}">
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Password</label>
-          <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Password" value="{{password}}">
-              <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
-              </span>
-          </p>
-        </div>
-
-        <div class="field">
-          <label class="label">Confirm Password</label>
-          <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Confirm Password">
-              <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
-              </span>
-          </p>
-        </div>
 
         <div class="field">
           <label class="label">Phone Number</label>
           <div class="control has-icons-left has-icons-right">
-            <input class="input" type="text" placeholder="123-456-7890" value="{{phone-number}}">
+            <input id="phone" class="input" type="text" placeholder="123-456-7890" value="{{phone}}">
               <span class="icon is-small is-left">
                 <i class="fas fa-phone"></i>
               </span>
@@ -64,12 +46,25 @@
         </div>
 
         <div class="control pt-5 pb-2 has-text-centered">
-          <button id='search' class="button is-info is-rounded is-fullwidth">
+          <button data-editId="{{id}}" id='save-profile' class="button is-info is-rounded is-fullwidth">
             Save Account
           </button>
+          <br>
+          <button id='cancel' class="button is-info is-rounded is-fullwidth">
+              Cancel
+          </button>
+
+          <br>
+          <span id="update-password"><a href="#">Update Password?</a></span>
+          <br>
         </div>
 
       </div>
     </div>
   </div>
 </section>
+
+<script src="/js/formatPhone.js"></script>
+<script src="/js/editAccount.js"></script>
+
+{{/user }}
