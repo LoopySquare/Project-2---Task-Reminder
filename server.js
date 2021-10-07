@@ -5,8 +5,7 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const cron = require('node-cron');
-const remindrExporter = require('./exporter/exportRemindr');
-const sendRemindrs = require('./mailer/mailer');
+
 
 
 const sequelize = require('./config/connection');
