@@ -8,8 +8,6 @@ router.get('/', withAuth, async (req, res) => {
     const messageData = await User.findByPk(req.session.user_id, {
       include: [{ model: Message}]
     })
-
-    console.log(messageData);
     
     res.status(200).json(messageData)
   } catch (err) {
@@ -30,6 +28,65 @@ router.post('/create', async (req, res) => {
     });
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+// Edit User Account
+router.put('/account/edit/:id', withAuth, async (req, res) => {
+  try {
+    const userData = await User.update({ 
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      phone: req.body.phone
+    },
+    {
+      where: {
+        id: req.params.id,
+        // user_id: req.session.user_id
+      }
+    })
+
+    console.log(userData);
+
+    res.status(200).json(userData);
+  } catch(err) {
+    console.log(err);
+    res.status(404).json(err);
+  }
+});
+
+// Edit User Account
+router.put('/password/update/:id', withAuth, async (req, res) => {
+  try {
+
+    const passData = await User.findByPk(req.session.user_id, {
+    })
+
+    const userData = await User.update({ 
+      password: req.body.newPassword,
+    },
+    {
+      where: {
+        id: req.params.id,
+        // user_id: req.session.user_id
+      }
+    })
+
+    const validPassword = await userData.checkPassword(req.body.currPassword);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    console.log(userData);
+
+    res.status(200).json(userData);
+  } catch(err) {
+    console.log(err);
+    res.status(404).json(err);
   }
 });
 
