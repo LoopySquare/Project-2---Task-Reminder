@@ -15,7 +15,7 @@ const resetPasswordFormHandler = async (event) => {
     
     if (newPassword && confirmPassword) {
   
-      const response = await fetch(`/api/users/password/update/`, {
+      const response = await fetch(`/api/users/password/reset/`, {
         method: 'PUT',
         body: JSON.stringify({ newPassword }),
         headers: { 'Content-Type': 'application/json' },
@@ -32,8 +32,6 @@ const resetPasswordFormHandler = async (event) => {
         
         if (result.isConfirmed) {
           document.location.replace(`/profile`);
-        // For more information about handling dismissals please visit
-        // https://sweetalert2.github.io/#handling-dismissals
         } 
 
       } else {
