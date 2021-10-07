@@ -113,6 +113,7 @@ const validatePhone = async (phone) => {
     return true;
 }
 
+$("#send_date").datepicker({ minDate: 0 });
 
 document
   .querySelector('#save-profile')

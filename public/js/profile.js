@@ -15,7 +15,7 @@ const delButtonHandler = async (event) => {
     })
     
     if (result.isConfirmed) {
-      const response = fetch(`/api/messages/${id}`, {
+      const response = await fetch(`/api/messages/${id}`, {
         method: 'DELETE',
       });
     
