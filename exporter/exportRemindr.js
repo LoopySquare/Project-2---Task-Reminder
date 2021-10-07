@@ -4,7 +4,7 @@ require('dotenv').config({path: "../.env"});
 
 const remindrExporter = async () => {
 
-  const URL = 'http://localhost:3001' || process.env.BASEURL
+  const URL = process.env.BASEURL || 'http://localhost:3001'
 
   const timeObj = dateTime();
 
@@ -17,6 +17,12 @@ const remindrExporter = async () => {
       body: JSON.stringify({ current_date, current_time, am_pm }),
       headers: { 'Content-Type': 'application/json' },
     });
+
+    if(response.ok){
+      return;
+    } else {
+      console.error( {message: 'Export Failed'} );
+    }
   }
 }
 
