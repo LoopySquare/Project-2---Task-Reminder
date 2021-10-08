@@ -4,14 +4,14 @@ const { readFromFile } = require('../utils/fsUtils');
 
 require('dotenv').config({path: "../.env"});
 
-const remindrMailer = async () => {
+const remindrMailer = async (remindrsObject) => {
 
-  const userData = await readFromFile(path.join(__dirname, '../exporter/jsonExport/remindrExport.json'));
+  // const userData = await readFromFile(path.join(__dirname, '../exporter/jsonExport/remindrExport.json'));
   
-  const parsedData = await JSON.parse(userData);
+  // const parsedData = await JSON.parse(userData);
 
-  //Checks if any Data was exported, if object is empty, end
-  if(parsedData[0] === undefined){
+  // Checks if any Data was exported, if object is empty, end
+  if(remindrsObject[0] === undefined){
     return;
 
   } else {  
@@ -29,10 +29,10 @@ const remindrMailer = async () => {
       },
     });
     
-    for (let i = 0; i < parsedData.length; i++) {
-    const event = parsedData[i].event_name;
-    const toEmail = parsedData[i].user.email;
-    const message = parsedData[i].content;
+    for (let i = 0; i < remindrsObject.length; i++) {
+    const event = remindrsObject[i].event_name;
+    const toEmail = remindrsObject[i].user.email;
+    const message = remindrsObject[i].content;
     
     let info = await transporter.sendMail({
       from: `"Remindr App" <remindr.notification@gmail.com>`, // sender address

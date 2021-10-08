@@ -33,14 +33,14 @@ router.post('/export', async (req, res) => {
       ],
       where:{
         send_date: req.body.current_date,
-        send_time: req.body.current_time,
+        // send_time: req.body.current_time,
         am_pm: req.body.am_pm,
       }
     });
 
-    writeToFile(messageData);
+    // writeToFile(messageData);
 
-    res.status(200).json()
+    res.status(200).json(messageData)
 
   } catch (err) {
     console.log(err);

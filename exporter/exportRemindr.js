@@ -14,16 +14,19 @@ const remindrExporter = async () => {
     // Send a POST request to the API endpoint
     const response = await fetch(`${URL}/api/messages/export`, {
       method: 'POST',
-      body: JSON.stringify({ current_date, current_time, am_pm }),
+      body: JSON.stringify({ current_date, am_pm }), // current_time,
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if(response.ok){
-      return;
+    if (response.ok) {
+      
+      return await response.json();
+
     } else {
-      console.error( {message: 'Export Failed'} );
+      console.log('Something went horribly wrong');
     }
-  }
+   }
 }
 
 module.exports = remindrExporter;
+
