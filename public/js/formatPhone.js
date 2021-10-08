@@ -1,4 +1,3 @@
-
 const formatNumber = (number) => {
 
   // RegEx to remove all non-numeric characters

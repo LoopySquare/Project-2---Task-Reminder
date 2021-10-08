@@ -4,27 +4,32 @@
     "last_name": "David",
     "email": "ElDee@mail.com",
     "phone": "5555555555",
-    "password": "password12345"
+    "password": "password12345",
+    "timeZone": "America/Denver"
   },
   {
     "first_name": "Michel",
     "last_name": "Scott",
     "email": "mscott@mscottpaperco.com",
     "phone": "5555555555",
-    "password": "password12346"
+    "password": "password12346",
+    "timeZone": "America/Denver"
+    
   },
   {
     "first_name": "Pam",
     "last_name": "Beasley",
     "email": "iloveJim@mail.com",
     "phone": "5555555555",
-    "password": "DwightSucks!"
+    "password": "DwightSucks!",
+    "timeZone": "America/Denver"
   },
   {
     "first_name": "George",
     "last_name": "Costanza",
     "email": "serenityNow@mail.com",
     "phone": "5555555555",
-    "password": "JerryOwesMe5Bucks!"
+    "password": "JerryOwesMe5Bucks!",
+    "timeZone": "America/Denver"
   }
 ]

@@ -1,4 +1,4 @@
-const dateTime = require('../utils/getDateTime');
+const currentTime = require('../utils/getDateTime');
 const fetch = require('node-fetch');
 require('dotenv').config({path: "../.env"});
 
@@ -6,15 +6,13 @@ const remindrExporter = async () => {
 
   const URL = process.env.BASEURL || 'http://localhost:3001'
 
-  const timeObj = dateTime();
+  const currTime = currentTime();
 
-  const {current_date, current_time, am_pm} = timeObj;
-
-  if (current_date && current_time && am_pm) {
+  if (currTime) {
     // Send a POST request to the API endpoint
     const response = await fetch(`${URL}/api/messages/export`, {
       method: 'POST',
-      body: JSON.stringify({ current_date, current_time, am_pm }),
+      body: JSON.stringify({ currTime }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -23,6 +21,7 @@ const remindrExporter = async () => {
       return await response.json();
 
     } else {
+
       console.log('Something went horribly wrong');
     }
    }

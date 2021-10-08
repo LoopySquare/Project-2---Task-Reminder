@@ -6,11 +6,9 @@ require('dotenv').config({path: "../.env"});
 
 const remindrMailer = async (remindrsObject) => {
 
-  // const userData = await readFromFile(path.join(__dirname, '../exporter/jsonExport/remindrExport.json'));
-  
-  // const parsedData = await JSON.parse(userData);
+  console.log(remindrsObject);
 
-  // Checks if any Data was exported, if object is empty, end
+  Checks if any Data was exported, if object is empty, end
   if(remindrsObject[0] === undefined){
     return;
 

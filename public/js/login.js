@@ -6,7 +6,7 @@ const loginFormHandler = async (event) => {
   const password = document.querySelector('#password-login').value.trim();
 
   if(!password){
-
+    
   }
 
   if (email && password) {
@@ -36,7 +36,7 @@ const signupFormHandler = async (event) => {
 };
 
 const forgotPasswordHandler = async (event) => {
-  document.location.replace('/account/recovery/');
+  document.location.replace('/account/forgot_password/');
 };
 
 document

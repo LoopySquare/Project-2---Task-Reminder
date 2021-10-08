@@ -1,4 +1,5 @@
 
+
 const createButtonHandler = async (event) => {
   event.preventDefault();
 
@@ -11,6 +12,7 @@ const createButtonHandler = async (event) => {
   const send_date = document.querySelector('#send_date').value.trim();
   const send_time = document.querySelector('#send_time').value.trim();
   const am_pm = document.querySelector('input[name="ampm"]:checked').value.trim();
+  
 
   if (event_name && description && content && send_date && send_time && am_pm) {
     // Send a POST request to the API endpoint

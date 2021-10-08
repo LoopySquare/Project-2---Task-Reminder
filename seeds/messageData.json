@@ -3,24 +3,18 @@
     "event_name": "Parking",
     "content": "Move your car dumby",
     "description": "Reminder for Thursday Street Sweeping",
-    "send_date": "2021-10-15",
-    "send_time": "06:15",
-    "am_pm": "AM"
+    "send_date": "2021-10-08T20:45:00.000Z"
   },
   {
     "event_name": "Doctor Appointment",
     "content": "Weekly Checkup reminder for Dr. Smith @ 3PM",
     "description": "Check-up for after my knee surgery",
-    "send_date": "2021-10-30",
-    "send_time": "01:30",
-    "am_pm": "PM"
+    "send_date": "2021-10-08T20:45:00.000Z"
   },
   {
     "event_name": "Airport Pickup",
     "content": "You have to pick up your sister from the AirPort!",
     "description": "Flight 2003 United",
-    "send_date": "2021-11-20",
-    "send_time": "07:30",
-    "am_pm": "PM"
+    "send_date": "2021-10-08T20:45:00.000Z"
   }
 ]

@@ -37,6 +37,10 @@ User.init(
     //   allowNull: false,
     //   defaultValue: ''
     // },
+    timeZone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     phone: {
       type: DataTypes.STRING,
       allowNull: false,
