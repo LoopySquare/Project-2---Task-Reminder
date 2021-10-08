@@ -49,7 +49,22 @@ const createFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/profile');
     } else {
-      alert(response.statusText);
+      const result = await Swal.fire({
+        title: 'Account Already Exists:',
+        text: 'Seems an account already exists with that email',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Recover Account',
+        cancelButtonText: 'Create with different email'
+      })
+
+      if (result.isConfirmed) {
+        document.location.replace(`/account/recovery/`);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        document.querySelector("#email").classList.add('is-danger');
+        document.querySelector('#email').focus();
+        return;
+      }
     }
   }
 };
@@ -57,22 +72,20 @@ const createFormHandler = async (event) => {
 const cancelButtonHandler = async (event) => {
   event.preventDefault();
 
-  Swal.fire({
+  const result = await Swal.fire({
     title: 'Are you sure?',
     text: 'All data will be lost, and not recoverable',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonText: 'Yes, cancel!',
     cancelButtonText: 'No, I will complete'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      document.location.replace(`/`);
-    // For more information about handling dismissals please visit
-    // https://sweetalert2.github.io/#handling-dismissals
-    } else if (result.dismiss === Swal.DismissReason.cancel) {
-      return
-    }
   })
+
+  if (result.isConfirmed) {
+    document.location.replace(`/`);
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    return
+  }
   
 };
 

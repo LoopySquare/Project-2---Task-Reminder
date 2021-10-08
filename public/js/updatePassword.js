@@ -6,8 +6,6 @@ const createFormHandler = async (event) => {
   const newPassword = document.querySelector('#new-password').value.trim();
   const confirmPassword = document.querySelector('#confirm-password').value.trim();
 
-  console.log(document.querySelector('#current-password').value.trim());
-
   const passMatch = await validatePass(currPassword, newPassword, confirmPassword);
 
    if(!passMatch) {
@@ -24,22 +22,22 @@ const createFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    console.log(response);
-
     if (response.ok) {
-      Swal.fire({
-        title: 'Congratulations!',
+
+      const result = await Swal.fire({
+        title: 'Congradulations!',
         text: 'Your Password has been updated!',
         icon: 'success',
         showCancelButton: true,
         confirmButtonText: 'Thank you!',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          document.location.replace(`/profile`);
-        // For more information about handling dismissals please visit
-        // https://sweetalert2.github.io/#handling-dismissals
-        } 
       })
+      
+      if (result.isConfirmed) {
+        document.location.replace(`/profile`);
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      } 
+
     } else {
       swal.fire("Current Password Does not match what's on record");
       document.querySelector('#current-password').focus();

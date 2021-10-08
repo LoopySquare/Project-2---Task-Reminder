@@ -26,6 +26,10 @@ const recoverFormHandler = async (event) => {
   }
 };
 
+const cancelFormHandler = async () => {
+  document.location.replace('/');
+}
+
 const validateEmail = async (email) => {
 
   let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -48,3 +52,7 @@ const validateEmail = async (email) => {
 document
   .querySelector('#recover-account')
   .addEventListener('click', recoverFormHandler);
+
+document
+  .querySelector('#cancel')
+  .addEventListener('click', cancelFormHandler);

@@ -5,28 +5,28 @@ const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-remindrId')) {
     const id = event.target.getAttribute('data-remindrId');
 
-    Swal.fire({
+    const result = await Swal.fire({
       title: 'Are you sure?',
       text: 'This Remindr will be lost, and cannot be recovered',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, Delete this Remindr!',
       cancelButtonText: 'No, keep this Remindr'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const response = fetch(`/api/messages/${id}`, {
-          method: 'DELETE',
-        });
-    
-        if (response.ok) {
-          document.location.replace('/profile');
-        }
-      // For more information about handling dismissals please visit
-      // https://sweetalert2.github.io/#handling-dismissals
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        return;
-      }
     })
+    
+    if (result.isConfirmed) {
+      const response = await fetch(`/api/messages/${id}`, {
+        method: 'DELETE',
+      });
+    
+      if (response.ok) {
+        document.location.replace('/profile');
+      }
+
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      return;
+    }
+
   }
 };
 

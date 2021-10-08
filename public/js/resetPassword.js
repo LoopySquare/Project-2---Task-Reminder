@@ -15,26 +15,26 @@ const resetPasswordFormHandler = async (event) => {
     
     if (newPassword && confirmPassword) {
   
-      const response = await fetch(`/api/users/password/update/`, {
+      const response = await fetch(`/api/users/password/reset/`, {
         method: 'PUT',
         body: JSON.stringify({ newPassword }),
         headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
-        Swal.fire({
-          title: 'Congratulations!',
+
+        const result = await Swal.fire({
+          title: 'Congradulations!',
           text: 'Your Password has been updated!',
           icon: 'success',
           showCancelButton: true,
           confirmButtonText: 'Thank you!',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            document.location.replace(`/profile`);
-          // For more information about handling dismissals please visit
-          // https://sweetalert2.github.io/#handling-dismissals
-          } 
         })
+        
+        if (result.isConfirmed) {
+          document.location.replace(`/profile`);
+        } 
+
       } else {
         swal.fire("Current Password Does not match what's on record");
         document.querySelector('#current-password').focus();
@@ -42,6 +42,10 @@ const resetPasswordFormHandler = async (event) => {
       }
     }
   };
+
+  const cancelFormHandler = async () => {
+    document.location.replace('/');
+  }
   
   // VALIDATE PASSWORD AND CONFIRM PASSWORD ARE THE SAME AND PROPER LEN
   const validatePass = async (newPass, confirmPass) => {
@@ -75,3 +79,7 @@ const resetPasswordFormHandler = async (event) => {
     .querySelector('#update-password')
     .addEventListener('click', resetPasswordFormHandler);
   
+
+  document
+    .querySelector('#cancel')
+    .addEventListener('click', cancelFormHandler);

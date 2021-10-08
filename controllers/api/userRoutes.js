@@ -18,6 +18,7 @@ router.get('/', withAuth, async (req, res) => {
 // Create New User Account
 router.post('/create', async (req, res) => {
   try {
+
     const userData = await User.create(req.body);
 
     req.session.save(() => {
@@ -52,7 +53,7 @@ router.post('/account/recovery/', async (req, res) => {
 
    req.session.save(() => {
     req.session.user_id = userData.id;
-    req.session.logged_in = true;
+    req.session.logged_in = false;
     
     res.json();
   });
@@ -90,8 +91,7 @@ router.put('/account/edit/', withAuth, async (req, res) => {
 // Edit User Account
 router.put('/password/update/', withAuth, async (req, res) => {
   try {
-
-    if(req.body.currPassword){
+    
       const passData = await User.findByPk(req.session.user_id)
 
       const validPassword = passData.checkPassword(req.body.currPassword);
@@ -102,7 +102,27 @@ router.put('/password/update/', withAuth, async (req, res) => {
           .json();
         return;
       }
-    }
+
+    const userData = await User.update({ 
+      password: req.body.newPassword,
+    },
+    {
+      where: {
+        id: req.session.user_id
+      },
+      individualHooks: true
+    })
+
+    res.status(200).json(userData);
+
+  } catch(err) {
+    console.log(err);
+    res.status(404).json(err);
+  }
+});
+
+router.put('/password/reset/', async (req, res) => {
+  try {
 
     const userData = await User.update({ 
       password: req.body.newPassword,

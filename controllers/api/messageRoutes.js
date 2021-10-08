@@ -40,6 +40,8 @@ router.post('/export', async (req, res) => {
 
     writeToFile(messageData);
 
+    res.status(200).json()
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
