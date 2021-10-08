@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Message, User } = require('../models');
 const withAuth = require('../utils/auth');
+const { toLocal } = require('../utils/convertTime');
 
 
 router.get('/', async (req, res) => {
@@ -34,12 +35,19 @@ router.get('/profile', withAuth, async (req, res) => {
     // Serialize data so the template can read it
     const user = userData.get({ plain: true });
 
+    // console.log(user.timeZone);
+
     //Iterate over the messages array
     const remindrs = userData.messages.map((remindr) => remindr.get({ plain: true }));
 
-    res.render('profile', { user, remindrs });
+    const localTimeRemindrs = toLocal(remindrs, user.timeZone);
+
+    console.log(localTimeRemindrs);
+
+    res.render('profile', { user, localTimeRemindrs });
 
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -47,15 +55,29 @@ router.get('/profile', withAuth, async (req, res) => {
 router.get('/message/edit/:id', withAuth, async (req, res) => {
 
   try {
+
+    const userData = await User.findByPk(req.session.user_id,{
+    attributes: ['timeZone'],
+    where: {
+      id: req.session.user_id,
+    }
+  });
+
+    const user = await userData.get({ plain: true })
+
+    console.log(user.timeZone);
+
     const messageData = await Message.findByPk(req.params.id, {
       where: {
       user_id: req.session.user_id,
       },
     })
 
-    const remindrs = messageData.get({ plain: true });
+    const remindr = messageData.get({ plain: true });
 
-    res.render('editRemindr', { remindrs } )
+    const localTimeRemindrs = toLocal(remindr, user.timeZone);
+
+    res.render('editRemindr', { localTimeRemindrs } )
 
   } catch (err) {
     res.status(400).json(err);
@@ -67,9 +89,18 @@ router.get('/message/add', withAuth, async (req, res) => {
 
   try {
 
-    res.render('addRemindr')
+    const userData = await User.findByPk(req.session.user_id, {
+      where: {
+        id: req.session.user_id,
+      }
+    })
+
+    const user = await userData.get({ plain: true });
+
+    res.render('addRemindr', { user })
 
   } catch (err) {
+    console.log(err);
     res.status(404).json(err);
   }
 

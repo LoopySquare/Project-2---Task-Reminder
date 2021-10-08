@@ -1,4 +1,4 @@
-{{#remindrs }}
+{{#localTimeRemindrs }}
 <section class="hero is-fullheight">
     <div class="header has-text-centered">
         <div class="brand">
@@ -41,11 +41,11 @@
                 </div>
 
                 <div class="field">
-                    <label class="label">Alert Time currently selected: {{send_time}} {{am_pm}}</label>
+                    <label id="formatted-time" class="label">Alert Time currently selected: {{send_date}}</label>
                     <div class="control">
                         <div class="select">
                             <select id="send_time">
-                            <option>{{send_time}}</option>
+                            <option id="user-current-time"></option>
                               <option>12:00</option>
                               <option>12:15</option>
                               <option>12:30</option>
@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="field">
-                    <div id="ampm" data-ampm="{{am_pm}}" class="control">
+                    <div id="ampm" class="control">
                     <label class="radio">
                         <input id="AM" type="radio" name="ampm" value="AM">
                             AM
@@ -128,7 +128,7 @@
         </div>
     </div>
 </section>
-{{/remindrs }}
+{{/localTimeRemindrs }}
 
 <script src="/js/editRemindr.js"></script>
 <script src="/js/dateFormat.js"></script>

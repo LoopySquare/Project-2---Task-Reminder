@@ -7,9 +7,12 @@ const saveButtonHandler = async (event) => {
   const first_name = document.querySelector('#first-name').value.trim();
   const last_name = document.querySelector('#last-name').value.trim();
   const phone = formatPhone(document.querySelector('#phone').value.trim());
+  const timeZone = document.querySelector('#time-zone').value.trim();
+  
 
   const validName = await validateName(first_name, last_name);
   const validPhone = await validatePhone(phone);
+  const validTZ = await validateTZ(timeZone);
 
   if(!validName){
     return;
@@ -17,14 +20,18 @@ const saveButtonHandler = async (event) => {
 
   if(!validPhone){
     return;
-  } 
+  }
 
-  if (first_name && last_name && phone && validName && validPhone) {
+  if(!validTZ){
+    return;
+  }
+
+  if (first_name && last_name && phone && timeZone) {
 
     console.log('Sending Fetch');
     const response = await fetch(`/api/users/account/edit/`, {
       method: 'PUT',
-      body: JSON.stringify({ first_name, last_name, phone }),
+      body: JSON.stringify({ first_name, last_name, phone, timeZone }),
       headers: { 'Content-Type': 'application/json' },
     });
     
@@ -112,6 +119,15 @@ const validatePhone = async (phone) => {
     return false;
   }
     return true;
+}
+
+const validateTZ = async (timeZone) => {
+
+  if(timeZone === 'default'){
+    swal.fire("Please Select Your Time Zone");
+    return false;
+  }
+  return true;
 }
 
 document

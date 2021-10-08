@@ -26,26 +26,6 @@ Message.init(
     send_date: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        // must be in a YYYY-MM-DD Format
-        isDate: true,
-      }
-    },
-    send_time: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate:{
-        // Must be in a HH:DD Format
-        is: /^(0?[1-9]|1[0-2]):[0-5][0-9]$/,
-      }
-    },
-    am_pm: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate:{
-        // Can only be AM or PM
-        is: /^[APap][mM]$/,
-      }
     },
     user_id: {
       type: DataTypes.INTEGER,
