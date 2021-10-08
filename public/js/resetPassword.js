@@ -22,6 +22,7 @@ const resetPasswordFormHandler = async (event) => {
       });
   
       if (response.ok) {
+
         const result = await Swal.fire({
           title: 'Congradulations!',
           text: 'Your Password has been updated!',
