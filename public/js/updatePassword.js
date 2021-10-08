@@ -1,6 +1,8 @@
 const createFormHandler = async (event) => {
   event.preventDefault();
 
+  
+
   // Collect values from the login form
   const currPassword = document.querySelector('#current-password').value.trim();
   const newPassword = document.querySelector('#new-password').value.trim();
@@ -46,6 +48,25 @@ const createFormHandler = async (event) => {
   }
 };
 
+const cancelButtonHandler = async (event) => {
+  event.preventDefault();
+
+  const result = await Swal.fire({
+    title: 'Are you sure?',
+    text: 'You will be returned to your Account Page.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, cancel!',
+    cancelButtonText: 'No, I will complete'
+  })
+  
+  if (result.isConfirmed) {
+    document.location.replace(`/profile`);
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    return
+  }
+};
+
 // VALIDATE PASSWORD AND CONFIRM PASSWORD ARE THE SAME AND PROPER LEN
 const validatePass = async (currPass, newPass, confirmPass) => {
 
@@ -83,3 +104,7 @@ const blankPass = () => {
 document
   .querySelector('#update-password')
   .addEventListener('click', createFormHandler);
+
+document
+  .querySelector('#cancel')
+  .addEventListener('click', cancelButtonHandler);
