@@ -14,7 +14,7 @@ const remindrExporter = async () => {
     // Send a POST request to the API endpoint
     const response = await fetch(`${URL}/api/messages/export`, {
       method: 'POST',
-      body: JSON.stringify({ current_date, am_pm }), // current_time,
+      body: JSON.stringify({ current_date, current_time, am_pm }),
       headers: { 'Content-Type': 'application/json' },
     });
 
