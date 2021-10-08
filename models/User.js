@@ -32,6 +32,11 @@ User.init(
         isEmail: true,
       },
     },
+    // bio: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   defaultValue: ''
+    // },
     phone: {
       type: DataTypes.STRING,
       allowNull: false,
