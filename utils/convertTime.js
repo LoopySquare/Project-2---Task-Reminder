@@ -6,6 +6,8 @@ const toUTC = (date, time, ampm, timezone) => {
   let hour = Number(timeArr[0]);
   const minutes = timeArr[1];
 
+  console.log(hour, minutes);
+
   if(ampm === 'AM'){
     if(hour === 12){
       hour = '00';
@@ -19,6 +21,7 @@ const toUTC = (date, time, ampm, timezone) => {
   }
 
   hour = hour < 10 ? '0' + hour : hour;
+  hour = hour === '000' ? '00' : hour
 
   const newDateTime = `${date} ${hour}:${minutes}:00`
 
@@ -99,3 +102,5 @@ const timeFormatter = (timeObj) => {
 }
 
 module.exports = {toUTC, toLocal, timeFormatter};
+
+console.log(toUTC('2021-10-09', '12:29', 'AM', 'America/Denver'));
