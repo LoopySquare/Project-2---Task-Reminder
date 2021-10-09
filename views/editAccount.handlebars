@@ -1,13 +1,13 @@
 {{#user }}
 <section class="hero is-fullheight">
-  <div class="header-profile has-text-centered">
+  <div class="header-profile header has-text-centered color-change-5x">
     <div class="brand">
       <img src="/img/remindr logo.png" alt="main-logo" class="remindrLogo">
     </div>
   </div>
 
   <div class="hero-body container">
-    <div class="card pr-4 pl-4">
+    <div class="card profile-card peace-card pr-6 pl-6">
       <div class="card-content">
 
         <div class="field">
@@ -28,34 +28,27 @@
               </select>
             </div>
           </div>
-          <form action="/action_page.php" class="has-text-centered mt-2">
-            <input type="file" id="myFile" name="filename">
-          </form>
+          {{!-- <form action="/action_page.php" class="has-text-centered mt-2">
+            <input class="button" type="file" id="myFile" name="filename">
+          </form> --}}
         </div>
 
-        <div class="field">
+        {{!-- <div class="field">
           <label class="label">Font</label>
           <div class="control mt-4">
-            <button onclick="setStyleSheet('/css/nyan.css')" href="#">Style 1</a>
+            <button class="button" onclick="setStyleSheet('/css/nyan.css')" href="#">Style 1</a>
           </div>
-        </div>
+        </div> --}}
 
         <div class="field">
           <label class="label">Theme</label>
           <div class="control mt-4">
-            <div class="select">
-              <select>
-              <option>Default Theme</option>
-              <option>Catch 'em All</option>
-              <option>Poly Want a Cracker</option>
-              <option>80's Baby</option>
-              <option>Splat</option>
-              <option>Peace and Love</option>
-              <option>Plain (Dark Mode)</option>
-              <option>Plain (Light Mode)</option>
-              <option>NYAN FOREVER</option>
-              </select>
-            </div>
+            <button class="button pr-2" onclick="setStyleSheet('/css/style.css')" href="#">Deafault</a>
+            <button class="button" onclick="setStyleSheet('/css/plainLightMode.css')" href="#">Basic Light</a>
+            <button class="button" onclick="setStyleSheet('/css/plainDarkMode.css')" href="#">Basic Dark</a>
+            <button class="button" onclick="setStyleSheet('/css/poly.css')" href="#">Low Poly</a>
+            <button class="button" onclick="setStyleSheet('/css/nyan.css')" href="#">NYAN FOREVER</a>
+            <button class="button" onclick="setStyleSheet('/css/peace.css')" href="#">Peace & Love</a>
           </div>
         </div>
 
@@ -123,16 +116,16 @@
         </div>
 
         <div class="control pt-5 pb-2 has-text-centered">
-          <button data-editId="{{id}}" id='save-profile' class="button is-info is-rounded is-fullwidth">
+          <button data-editId="{{id}}" id='save-profile' class="button profile-buttons is-info is-rounded is-fullwidth color-change-5x">
             Save Account
           </button>
           <br>
-          <button id='cancel' class="button is-info is-rounded is-fullwidth">
+          <button id='cancel' class="button profile-buttons is-info is-rounded is-fullwidth color-change-5x">
               Cancel
           </button>
 
           <br>
-          <span id="update-password"><a href="#">Update Password?</a></span>
+          <span id="update-password"><a href="#" class="update-password">Update Password?</a></span>
           <br>
         </div>
 

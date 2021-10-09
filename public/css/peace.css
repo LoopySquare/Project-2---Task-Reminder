@@ -12,8 +12,32 @@ html {
     padding-bottom: 0%;
 }
 
+.main-header{
+    background-color: black;
+    padding: 40px;
+  }
+
+.remindrLogo{
+    max-height: 150px;
+    width: auto;
+    position: relative; bottom: 20px;
+}
+  
+.logo{
+    position: relative; bottom: 70px;
+    color: white;
+}
+
+.label{
+    font-size: 1.1rem !important;
+}
+
 .profile-card{
     background: url("../img/peace-card.png") no-repeat center center fixed;
+}
+
+.peace-card{
+    background: url("../img/peace-card2.png") no-repeat center center fixed !important;
 }
 
 .profile-buttons{
@@ -82,4 +106,29 @@ html {
 
 .table-trash{
     background-color: rgba(255, 255, 255, 0.25);
+}
+
+.update-password{
+    color: black;
+}
+
+.description{
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.form-container{
+    margin: 20px;
+    max-width: 1000px;
+    padding: 75px;
+    border-radius: 25px;
+    background: url("../img/peace-card2.png") no-repeat center center fixed;
+}
+  
+.container{
+    margin: auto;
+}
+
+.forgot{
+    color: #2d092d;
 }

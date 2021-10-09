@@ -6,6 +6,11 @@ html {
     background-size: cover;
 }
 
+p {
+  line-height: 1.5;
+  font-family: 'Ubuntu', sans-serif;
+}
+
 .color-change-5x {
 	-webkit-animation: color-change-5x 4s linear infinite alternate both;
 	        animation: color-change-5x 4s linear infinite alternate both;
@@ -58,6 +63,11 @@ html {
     }
 }
 
+.header-profile{
+  background-color: black;
+  padding-top: 30px;
+}
+
 .profile-card{
     background: url("../img/nyan-card.png");
 }
@@ -85,21 +95,86 @@ html {
 
 .table-title{
     color: white !important;
+    font-size: 1.3rem;
 }
 
 .table-description{
     color: white !important;
+    font-size: 1.1rem;
 }
 
 .remindr-date{
     color: white !important;
+    font-size: 1.3rem;
 }
 
 .table-time{
     color: white !important;
+    font-size: 1.3rem;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .email{
     color: white !important;
 }
-  
+
+.remindrLogo{
+  max-height: 150px;
+  width: auto;
+  position: relative; bottom: 20px;
+}
+
+.logo{
+  position: relative; bottom: 70px;
+  color: white;
+}
+
+.label{
+  color: white !important;
+}
+
+.update-password{
+  color: white !important;
+}
+
+.card{
+  margin-top: 40px;
+}
+
+.main-header{
+  background-color: black;
+  padding: 40px;
+}
+
+.description{
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.form-container{
+  margin: 20px;
+  max-width: 1000px;
+  padding: 75px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.8)
+}
+
+.container{
+  margin: auto;
+}
+
+.emailLabel{
+  color: #000e1c !important;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.3rem !important;
+}
+
+.passwordLabel{
+  color: #000e1c !important;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.3rem !important;
+}
+
+.pass{
+  color: lightgray;
+}

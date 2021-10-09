@@ -6,8 +6,40 @@ html {
     background-size: cover;
 }
 
+.header{
+    background-color: black;
+    padding-top: 40px;
+    padding-bottom: 0%;
+}
+
+.main-header{
+    background-color: black;
+    padding: 40px;
+}
+
+.remindrLogo{
+    max-height: 150px;
+    width: auto;
+    position: relative; bottom: 20px;
+}
+  
+.logo{
+    position: relative; bottom: 70px;
+    color: white;
+}
+
+.card{
+    margin-top: 40px;
+}
+
 .profile-card{
     background: url("../img/dark-mode-card.png")
+}
+
+.label{
+    font-family: 'Ubuntu', sans-serif;
+    color: white !important;
+    opacity: 87%;
 }
 
 .bio{
@@ -75,4 +107,40 @@ html {
 .profile-buttons{
     background-color: #aeee98 !important;
     color: #1d2025 !important;
+}
+
+.update-password{
+    font-family: 'Ubuntu', sans-serif;
+    color: #F0F4F8 !important;
+    opacity: 87%;
+}
+
+.radio{
+    font-family: 'Ubuntu', sans-serif;
+    color: #F0F4F8 !important;
+    opacity: 87%;
+}
+
+.form-container{
+    margin: 20px;
+    max-width: 1000px;
+    padding: 75px;
+    border-radius: 25px;
+    background-color: #364c61
+}
+  
+.container{
+    margin: auto;
+}
+
+.forgot{
+    font-family: 'Ubuntu', sans-serif;
+    color: #F0F4F8 !important;
+    opacity: 87%;
+}
+
+.description{
+    font-family: 'Ubuntu', sans-serif;
+    color: #F0F4F8 !important;
+    opacity: 87%;
 }

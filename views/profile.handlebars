@@ -2,40 +2,42 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {{#user }}
-<div class="header-profile has-text-centered">
+<div class="header-profile header has-text-centered color-change-5x">
   <div class="brand">
     <img src="/img/remindr logo.png" alt="main-logo" class="remindrLogo">
   </div>
 </div>
-<div class="container">
-  <div class="card">
+
+<div class="container profile-container">
+  <div class="card profile-card">
     <div class="card-content">
+
       <div class="media">
         <div class="media-left">
           <figure class="image is-128x128">
-            <img src="/img/default profile 1.jpg" alt="Placeholder image">
+            <img src="/img/default profile 1.jpg" alt="Profile Picture">
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4">{{first_name}} {{last_name}}</p>
-          <p class="subtitle is-6">{{email}}</p>
+          <p class="title is-4 first-name">{{first_name}} {{last_name}}</p>
+          <p class="subtitle is-6 email">{{email}}</p>
         </div>
       </div>
       <div class="card-content">
-        <p class="subtitle has-text-centered">
+        <p class="subtitle has-text-centered has-text-centered bio profile-bio">
           {{bio}}
         </p>
       </div>
     </div>
     <footer class="card-footer">
         <p class="card-footer-item">
-          <span id="edit-account"><a href="#" class="button is-primary">Edit Account</a></span>
+          <span id="edit-account"><a href="#" class="button is-primary profile-buttons color-change-5x">Edit Account</a></span>
         </p>
         <p class="card-footer-item">
-          <span id="new-remindr"><a href="#" class="button is-primary">New Remindr</a></span>
+          <span id="new-remindr"><a href="#" class="button is-primary profile-buttons color-change-5x">New Remindr</a></span>
         </p>
         <p class="card-footer-item">
-          <span id="logout"><a href="#" class="button is-primary">Logout</a></span>
+          <span id="logout"><a href="#" class="button is-primary profile-buttons color-change-5x">Logout</a></span>
         </p>
       </footer>
   </div>
@@ -44,37 +46,37 @@
 
 <div class="container">
   <div class="table-container">
-    <table class="table is-hoverable is-bordered is-fullwidth is-striped has-text-centered mb-6">
+    <table class="table is-bordered is-fullwidth is-striped has-text-centered mb-6">
       <thead>
         <tr class="table-head">
-          <th class="table-headings has-text-black is-size-4">Remindr Title</th>
-          <th class="table-headings has-text-black is-size-4">Description</th>
-          <th class="table-headings has-text-black is-size-4">Alert Day</th>
-          <th class="table-headings has-text-black is-size-4">Alert Time</th>
-          <th class="table-headings has-text-black is-size-4">Edit Remindr</th>
-          <th class="table-headings has-text-black is-size-4">Delete Remindr</th>
+          <th class="table-headings is-size-4">Remindr Title</th>
+          <th class="table-headings is-size-4">Description</th>
+          <th class="table-headings is-size-4">Alert Day</th>
+          <th class="table-headings is-size-4">Alert Time</th>
+          <th class="table-headings is-size-4">Edit Remindr</th>
+          <th class="table-headings is-size-4">Delete Remindr</th>
         </tr>
       </thead>
       <tfoot>
         <tr class="table-foot">
-          <th class="table-headings has-text-black is-size-4">Remindr Title</th>
-          <th class="table-headings has-text-black is-size-4">Description</th>
-          <th class="table-headings has-text-black is-size-4">Alert Day</th>
-          <th class="table-headings has-text-black is-size-4">Alert Time</th>
-          <th class="table-headings has-text-black is-size-4">Edit Remindr</th>
-          <th class="table-headings has-text-black is-size-4">Delete Remindr</th>
+          <th class="table-headings is-size-4">Remindr Title</th>
+          <th class="table-headings is-size-4">Description</th>
+          <th class="table-headings is-size-4">Alert Day</th>
+          <th class="table-headings is-size-4">Alert Time</th>
+          <th class="table-headings is-size-4">Edit Remindr</th>
+          <th class="table-headings is-size-4">Delete Remindr</th>
         </tr>
       </tfoot>
       {{#if localTimeRemindrs.length}}
       <tbody>
         {{#each localTimeRemindrs as |remindr|}}
-        <tr>
-            <td class="table-title has-text-primary"><p>{{remindr.event_name}}</p></td>
-            <td class="table-description has-text-dark"><p>{{remindr.description}}</p></td>
-            <td><p class="remindr-date has-text-dark">{{remindr.send_date}}</p></td>
-            <td class="remindr-time table-time has-text-dark">{{remindr.send_date}}</td>
-            <td><a data-remindrId="{{remindr.id}}" class="button is-info edit-remindr" title="Edit Remindr"><i class="fas fa-edit"></i></a></td>
-            <td><a data-remindrId="{{remindr.id}}" class="button is-danger delete-remindr" title="Sample Title"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+        <tr class="table-data color-change-5x">
+            <td class="table-title"><p>{{remindr.event_name}}</p></td>
+            <td class="table-description"><p>{{remindr.description}}</p></td>
+            <td class="table-date"><p class="remindr-date">{{remindr.send_date}}</p></td>
+            <td class="remindr-time table-time">{{remindr.send_date}}</td>
+            <td class="table-edit"><a data-remindrId="{{remindr.id}}" class="button is-info edit-remindr" title="Edit Remindr"><i class="fas fa-edit"></i></a></td>
+            <td class="table-trash"><a data-remindrId="{{remindr.id}}" class="button is-danger delete-remindr" title="Sample Title"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
         </tr>
           {{/each}}
       </tbody>
