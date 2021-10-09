@@ -7,6 +7,7 @@ const saveButtonHandler = async (event) => {
   const first_name = document.querySelector('#first-name').value.trim();
   const last_name = document.querySelector('#last-name').value.trim();
   const phone = formatPhone(document.querySelector('#phone').value.trim());
+  const bio = document.querySelector('#user-bio').value.trim();
 
   const validName = await validateName(first_name, last_name);
   const validPhone = await validatePhone(phone);
@@ -24,7 +25,7 @@ const saveButtonHandler = async (event) => {
     console.log('Sending Fetch');
     const response = await fetch(`/api/users/account/edit/`, {
       method: 'PUT',
-      body: JSON.stringify({ first_name, last_name, phone }),
+      body: JSON.stringify({ first_name, last_name, phone, bio }),
       headers: { 'Content-Type': 'application/json' },
     });
     

@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Message, User } = require('../../models');
 const withAuth = require('../../utils/auth');
-const { writeToFile } = require('../../utils/fsUtils');
 
 
 router.get('/:id', withAuth, async (req, res) => {
@@ -37,8 +36,6 @@ router.post('/export', async (req, res) => {
         am_pm: req.body.am_pm,
       }
     });
-
-    // writeToFile(messageData);
 
     res.status(200).json(messageData)
 
