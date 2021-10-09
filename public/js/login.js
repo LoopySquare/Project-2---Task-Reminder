@@ -1,12 +1,16 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
+  console.log('I clicked');
+
   // Collect values from the login form
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
-  if(!password){
-    
+  if(email === '' || password === ''){
+    swal.fire('Please enter your Email and Password')
+    document.querySelector("#email-login").classList.add('is-danger');
+    document.querySelector("#password-login").classList.add('is-danger');
   }
 
   if (email && password) {
@@ -28,6 +32,7 @@ const loginFormHandler = async (event) => {
     }
   }
 };
+
 
 const signupFormHandler = async (event) => {
   document.location.replace('/create');
