@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const cron = require('node-cron');
+// const sendRemindr = require('./tasks/sendRemindrs')
 
 
 
@@ -42,11 +43,7 @@ app.use(routes);
 
 // Used only for testing Local
 // cron.schedule('*/1 * * * *', async () => {
-//   // Export Data from DB to JSON
-//   await remindrExporter();
-//   // Send Remindrs
-//   await sendRemindrs();
-
+//   sendRemindr();
 // });
 
 sequelize.sync({ force: false }).then(() => {
