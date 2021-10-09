@@ -110,7 +110,7 @@ router.get('/account/edit', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    console.log(user);
+
 
     res.render('editAccount', { user })
 
@@ -155,7 +155,6 @@ router.get('/account/password/update', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    console.log(user);
 
     res.render('updatePassword', { user })
 

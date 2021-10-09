@@ -6,8 +6,6 @@ const toUTC = (date, time, ampm, timezone) => {
   let hour = Number(timeArr[0]);
   const minutes = timeArr[1];
 
-  console.log(hour, minutes);
-
   if(ampm === 'AM'){
     if(hour === 12){
       hour = '00';
