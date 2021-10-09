@@ -3,8 +3,6 @@
 const createButtonHandler = async (event) => {
   event.preventDefault();
 
-  console.log("i clicked this");
-
   // Collect values from the login form
   const event_name = document.querySelector('#event_name').value.trim();
   const description = document.querySelector('#description').value.trim();

@@ -1,8 +1,6 @@
 const saveButtonHandler = async (event) => {
   event.preventDefault();
 
-  console.log('I clicked this');
-
   const id = event.target.getAttribute('data-remindrId');
 
   // Collect values from the login form
@@ -17,7 +15,6 @@ const saveButtonHandler = async (event) => {
 
   if (event_name && description && content && send_date && send_time && am_pm) {
     // Send a POST request to the API endpoint
-    console.log('I got here');
     const response = await fetch(`/api/messages/${id}`, {
       method: 'PUT',
       body: JSON.stringify({ event_name, description, content, send_date, send_time, am_pm }),
@@ -42,8 +39,6 @@ const saveButtonHandler = async (event) => {
     } else {
       alert(response.statusText);
     }
-  } else {
-    console.log('This didnt work');
   }
 };
 

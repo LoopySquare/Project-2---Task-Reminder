@@ -57,8 +57,6 @@ const setTime = (time) => {
 // FORMATS DATE FOR VIEWABLE PLEASURE MM/DD/YYYY
 const formatDateProfile = () => {
   const remindrDates = document.querySelectorAll('.remindr-date');
-
-  console.log(remindrDates);
   
   // ITERATE OVER THE CLASS AND CONVERT DATE PROPERLY TO MM/DD/YYYY
   for (let i = 0; i < remindrDates.length; i++) {

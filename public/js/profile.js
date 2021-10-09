@@ -1,7 +1,6 @@
 
 // FUNCTION TO HANDLE DELETING MESSAGE
 const delButtonHandler = async (event) => {
-  console.log('I clicked here');
   if (event.target.hasAttribute('data-remindrId')) {
     const id = event.target.getAttribute('data-remindrId');
 

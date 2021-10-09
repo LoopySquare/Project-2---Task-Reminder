@@ -61,8 +61,6 @@ router.get('/message/edit/:id', withAuth, async (req, res) => {
 
     const user = await userData.get({ plain: true })
 
-    console.log(user.timeZone);
-
     const messageData = await Message.findByPk(req.params.id, {
       where: {
       user_id: req.session.user_id,

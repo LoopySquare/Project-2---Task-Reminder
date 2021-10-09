@@ -42,7 +42,6 @@ router.post('/account/recovery/', async (req, res) => {
       } 
     });
 
-    console.log(userData);
 
     if (!userData) {
       res.status(404).json({ 
@@ -91,7 +90,7 @@ router.put('/account/edit/', withAuth, async (req, res) => {
 });
 
 // Edit User Account
-router.put('/password/update/', withAuth, async (req, res) => {
+router.put('/password/update/:id', withAuth, async (req, res) => {
   try {
     
       const passData = await User.findByPk(req.session.user_id)
@@ -167,8 +166,6 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-
-    console.log(userData);
 
     req.session.save(() => {
       req.session.user_id = userData.id;

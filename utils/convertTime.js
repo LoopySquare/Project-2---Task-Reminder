@@ -43,7 +43,6 @@ const toLocal = (remindrArr, timeZone) => {
 
     const timeObj = remindrArr.send_date;
     const utcTime = dateConstructor(timeObj)
-    console.log(utcTime);
     const localTime = utcToZonedTime(utcTime, timeZone);
     // const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
     const localTimeFormatted = localTimeFormatter(localTime);
@@ -51,12 +50,9 @@ const toLocal = (remindrArr, timeZone) => {
 
   } else {
     for (let i = 0; i < remindrArr.length; i++) {
-      // console.log(remindrArr[i]);
       const timeObj = remindrArr[i].send_date;
       const utcTime = dateConstructor(timeObj)
-      console.log('utcTime', utcTime);
       const localTime = utcToZonedTime(utcTime, timeZone);
-      console.log('localTime', localTime);
       // const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
       const localTimeFormatted = localTimeFormatter(localTime);
       remindrArr[i].send_date = localTimeFormatted;
@@ -82,14 +78,11 @@ const localTimeFormatter = (timeObj) => {
 
   timeStr = timeFormatter(timeObj)
 
-  // console.log(timeStr);
-
   const year = timeStr.substring(0,4);
   const month = timeStr.substring(5,7)
   const day = timeStr.substring(8,10);
   const hour = timeStr.substring(11,13);
   const minute = timeStr.substring(14,16);
-  // console.log(`${year}-${month}-${day}T${hour}:${minute}`);
   return `${year}-${month}-${day}T${hour}:${minute}`
 }
 

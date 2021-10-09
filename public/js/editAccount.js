@@ -28,7 +28,6 @@ const saveButtonHandler = async (event) => {
 
   if (first_name && last_name && phone && timeZone) {
 
-    console.log('Sending Fetch');
     const response = await fetch(`/api/users/account/edit/`, {
       method: 'PUT',
       body: JSON.stringify({ first_name, last_name, phone, bio, timeZone }),
