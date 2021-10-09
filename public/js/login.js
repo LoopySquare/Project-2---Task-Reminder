@@ -36,7 +36,7 @@ const signupFormHandler = async (event) => {
 };
 
 const forgotPasswordHandler = async (event) => {
-  document.location.replace('/account/forgot_password/');
+  document.location.replace('/account/recovery/');
 };
 
 document
