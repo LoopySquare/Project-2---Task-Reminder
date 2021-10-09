@@ -40,9 +40,11 @@ const toLocal = (remindrArr, timeZone) => {
   if(remindrArr.length === 0){
     return;
   } else if(remindrArr[0] === undefined) {
+
     const timeObj = remindrArr.send_date;
     const utcTime = dateConstructor(timeObj)
-    const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
+    const localTime = utcToZonedTime(utcTime, timeZone)
+    //const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
     const localTimeFormatted = localTimeFormatter(localTime);
     remindrArr.send_date = localTimeFormatted;
 
@@ -50,7 +52,8 @@ const toLocal = (remindrArr, timeZone) => {
     for (let i = 0; i < remindrArr.length; i++) {
       const timeObj = remindrArr[i].send_date;
       const utcTime = dateConstructor(timeObj)
-      const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
+      const localTime = utcToZonedTime(utcTime, timeZone)
+      //const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
       const localTimeFormatted = localTimeFormatter(localTime);
       remindrArr[i].send_date = localTimeFormatted;
     }
