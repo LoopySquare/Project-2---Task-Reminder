@@ -6,88 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="./public/css/style.css">
-    <link rel="stylesheet" href="./public/css/playground.css">
-    <link rel="stylesheet" href="./public/customBulma/bulma.css">
+    <link rel="stylesheet" href="./public/css/plainLightMode.css">
+    <link rel="stylesheet" href="./public/css/plainDarkMode.css">
+    <link rel="stylesheet" href="./public/css/nyan.css">
+    <link rel="stylesheet" href="./public/css/poly.css">
+    <link rel="stylesheet" href="./public/css/peace.css">
+    <link rel="stylesheet" href="./public/mybulma/css/mystyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <title>Remindr</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-128x128">
-                  <img src="./public/img/default profile 1.jpg" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title is-4">{{first_name}} {{last_name}}</p>
-                <p class="subtitle is-6">{{email}}</p>
-              </div>
-            </div>
-            <div class="card-content">
-              <p class="subtitle">
-                a place for a bio?
-              </p>
-            </div>
-            <footer class="card-footer">
-              <p class="card-footer-item">
-                <span><a href="lnik to edit account?">Edit Account</a></span>
-              </p>
-              <p class="card-footer-item">
-                <span id="new-remindr"><a href="#">New Remindr</a></span>
-              </p>
-              <p class="card-footer-item">
-                <span id="logout"><a href="#">Logout</a></span>
-              </p>
-            </footer>
+  <div class="header-profile header has-text-centered color-change-5x">
+    <div class="brand">
+      <img src="./public/img/remindr logo.png" alt="main-logo" class="remindrLogo">
+    </div>
+  </div>
+  <div class="container profile-container">
+    <div class="card profile-card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-128x128">
+              <img src="./public/img/default profile 1.jpg" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4 first-name">Tommy Jobin</p>
+            <p class="subtitle is-6 email">tjobin1@gmail.com</p>
           </div>
         </div>
+        <div class="card-content">
+          <p class="subtitle has-text-centered bio profile-bio">
+            Welcome to your new Remindr account! You are just a few clicks away from setting up your first Remindr. To get started, click on the 'New Remindr' button. Fill out the form and save your new Remindr by clicking "Create Remindr". And that's it! Your Remindr is all set up and you will receive a notification for your specified date and time. To remove this message, simply change your bio in the Edit Account settings. You will also find other customization options in the Account settings to make your profile unique to you!
+          </p>
+        </div>
       </div>
-      
-      
-      <div class="container">
-        <table class="table is-hoverable is-fullwidth is-striped has-text-centered">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Remindr Title</th>
-              <th>Description</th>
-              <th>Alert Day(s)</th>
-              <th>Alert Time</th>
-              <th>Edit Remindr</th>
-              <th>Delete Remindr</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr>
-              <th>ID</th>
-              <th>Remindr Title</th>
-              <th>Description</th>
-              <th>Alert Day(s)</th>
-              <th>Alert Time</th>
-              <th>Edit Remindr</th>
-              <th>Delete Remindr</th>
-            </tr>
-          </tfoot>
-
-          <tbody>
+      <footer class="card-footer">
+          <p class="card-footer-item">
+            <span id="edit-account"><a href="#" class="button profile-buttons is-primary color-change-5x">Edit Account</a></span>
+          </p>
+          <p class="card-footer-item">
+            <span id="new-remindr"><a href="#" class="button profile-buttons is-primary color-change-5x">New Remindr</a></span>
+          </p>
+          <p class="card-footer-item">
+            <span id="logout"><a href="#" class="button profile-buttons is-primary color-change-5x">Logout</a></span>
+          </p>
+        </footer>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="table-container">
+      <table class="table is-hoverable is-bordered is-fullwidth is-striped has-text-centered mb-6">
+        <thead>
+          <tr class="table-head ">
+            <th class="table-headings is-size-4">Remindr Title</th>
+            <th class="table-headings is-size-4">Description</th>
+            <th class="table-headings is-size-4">Alert Day</th>
+            <th class="table-headings is-size-4">Alert Time</th>
+            <th class="table-headings is-size-4">Edit Remindr</th>
+            <th class="table-headings is-size-4">Delete Remindr</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr class="table-foot">
+            <th class="table-headings is-size-4">Remindr Title</th>
+            <th class="table-headings is-size-4">Description</th>
+            <th class="table-headings is-size-4">Alert Day</th>
+            <th class="table-headings is-size-4">Alert Time</th>
+            <th class="table-headings is-size-4">Edit Remindr</th>
+            <th class="table-headings is-size-4">Delete Remindr</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr class="table-data color-change-5x">
+              <td class="table-title"><p>Pay Rent</p></td>
+              <td class="table-description"><p>Don't forget dummy</p></td>
+              <td class="table-date"><p class="remindr-date">10/31/2021</p></td>
+              <td class="table-time">08:00 PM</td>
+              <td class="table-edit"><a data-remindrId="{{remindr.id}}" class="button is-info edit-remindr" title="Edit Remindr"><i class="fas fa-edit"></i></a></td>
+              <td class="table-trash"><a data-remindrId="{{remindr.id}}" class="button is-danger delete-remindr" title="Sample Title"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+          </tr>
             
-            <tr>
-              <th>{{remindr.id}}</th>
-                <td><a href="link to modal?" title="Sample Title">{{remindr.event_name}}</a></td>
-                <td><a href="link to modal?" title="Sample Title">{{remindr.description}}</a></td>
-                <td><p class="remindr-date">{{remindr.send_date}}</p></td>
-                <td>{{remindr.send_time}} {{remindr.am_pm}}</td>
-                <td><a data-remindrId="{{remindr.id}}" class="button is-info edit-remindr" title="Edit Remindr"><i class="fas fa-edit"></i></a></td>
-                <td><a data-remindrId="{{remindr.id}}" class="button is-danger delete-remindr" title="Sample Title"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-              
-          </tbody>
-          
-        </table>
-      </div>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
 
 </body>
 </html>

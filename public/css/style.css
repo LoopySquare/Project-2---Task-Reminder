@@ -8,6 +8,7 @@ html {
 
 p {
   line-height: 1.5;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 a { 
@@ -26,7 +27,7 @@ a {
   margin: auto;
 }
 
-.header{
+.main-header{
   background-color: black;
   padding: 40px;
 }
@@ -83,7 +84,7 @@ a {
 }
 
 .table-title{
-  color: black;
+  color: #00d1b2 !important;
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.3rem;
 }
@@ -107,5 +108,9 @@ a {
 }
 
 .table-headings{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.bio{
   font-family: 'Ubuntu', sans-serif;
 }

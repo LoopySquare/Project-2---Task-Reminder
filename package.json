@@ -204,11 +204,6 @@
     "yallist": "^4.0.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "seed": "node seeds/seed.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LoopySquare/Remindr.git"
