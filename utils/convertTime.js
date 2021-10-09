@@ -37,7 +37,9 @@ const toLocal = (remindrArr, timeZone) => {
     hour12: false
   }
 
-  if(remindrArr[0] === undefined) {
+  if(remindrArr.length === 0){
+    return;
+  } else if(remindrArr[0] === undefined) {
     const timeObj = remindrArr.send_date;
     const utcTime = dateConstructor(timeObj)
     const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
