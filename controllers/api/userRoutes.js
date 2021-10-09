@@ -73,6 +73,7 @@ router.put('/account/edit/', withAuth, async (req, res) => {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       phone: req.body.phone,
+      bio: req.body.bio,
       timeZone: req.body.timeZone,
     },
     {

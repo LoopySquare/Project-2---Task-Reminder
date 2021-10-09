@@ -32,11 +32,11 @@ User.init(
         isEmail: true,
       },
     },
-    // bio: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   defaultValue: ''
-    // },
+    bio: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      defaultValue: `Welcome to your new Remindr account! You are just a few clicks away from setting up your first Remindr. To get started, click on the 'New Remindr' button. Fill out the form and save your new Remindr by clicking "Create Remindr". And that's it! Your Remindr is all set up and you will receive a notification for your specified date and time. To remove this message, simply change your bio in the Edit Account settings. You will also find other customization options in the Account settings to make your profile unique to you!`
+    },
     timeZone: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -60,13 +60,10 @@ User.init(
   {
     hooks: {
       beforeCreate: async (newUserData) => {
-        console.log('I ran when adding a user!');
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-
-        console.log('I am Running');
         // In this case, we are taking the user's email address, and making all letters lower case before adding it to the database.
         if (updatedUserData.changed('password')) {
             updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
