@@ -5,3 +5,112 @@ html {
     -o-background-size: cover;
     background-size: cover;
   }
+
+  p {
+    line-height: 1.5;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  a { 
+    color: inherit; 
+  } 
+  
+  .form-container{
+    margin: 20px;
+    max-width: 1000px;
+    padding: 75px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.8)
+  }
+  
+  .container{
+    margin: auto;
+  }
+  
+  .main-header{
+    background-color: black;
+    padding: 40px;
+  }
+  
+  .header-profile{
+    background-color: black;
+    padding-top: 30px;
+  }
+  
+  .logo{
+    position: relative; bottom: 70px;
+    color: white;
+  }
+  
+  .description{
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .pass{
+    color: lightsteelblue;
+    font-size: .8rem;
+  }
+  
+  .remindrLogo{
+    max-height: 150px;
+    width: auto;
+    position: relative; bottom: 20px;
+  }
+  
+  .logo{
+    position: relative; bottom: 70px;
+    color: white;
+  }
+  
+  .swal2-styled.swal2-confirm{
+    background-color: #3e8ed0 !important;
+  }
+  
+  .swal2-styled.swal2-confirm:focus{
+    box-shadow: 0 0 0 3px rgb(62 142 208 / 50%) !important;
+  }
+  
+  .card{
+    margin-top: 40px;
+  }
+  
+  .table-head{
+    background-color: #efefef
+  }
+  
+  .table-foot{
+    background-color: #efefef
+  }
+  
+  .table-title{
+    color: #00d1b2 !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem;
+  }
+  
+  .table-description{
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.1rem;
+  }
+  
+  .remindr-date{
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem;
+  }
+  
+  .table-time{
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem;
+  }
+  
+  .table-headings{
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .bio{
+    font-family: 'Ubuntu', sans-serif;
+  }
