@@ -32,6 +32,11 @@ User.init(
         isEmail: true,
       },
     },
+    theme: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      defaultValue: '/css/style.css'
+    },
     bio: {
       type: DataTypes.TEXT,
       allowNull: false,

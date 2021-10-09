@@ -9,6 +9,7 @@ const saveButtonHandler = async (event) => {
   const phone = formatPhone(document.querySelector('#phone').value.trim());
   const bio = document.querySelector('#user-bio').value.trim();
   const timeZone = document.querySelector('#time-zone').value.trim();
+  const theme = document.querySelector('#theme-selector').value.trim();
 
   const validName = await validateName(first_name, last_name);
   const validPhone = await validatePhone(phone);
@@ -30,7 +31,7 @@ const saveButtonHandler = async (event) => {
 
     const response = await fetch(`/api/users/account/edit/`, {
       method: 'PUT',
-      body: JSON.stringify({ first_name, last_name, phone, bio, timeZone }),
+      body: JSON.stringify({ first_name, last_name, phone, bio, timeZone, theme }),
       headers: { 'Content-Type': 'application/json' },
     });
     

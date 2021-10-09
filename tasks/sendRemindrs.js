@@ -10,3 +10,5 @@ const sendRemindr = async () => {
 }
 
 sendRemindr();
+
+module.exports = sendRemindr;

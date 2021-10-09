@@ -74,6 +74,7 @@ router.put('/account/edit/', withAuth, async (req, res) => {
       phone: req.body.phone,
       bio: req.body.bio,
       timeZone: req.body.timeZone,
+      theme: req.body.theme
     },
     {
       where: {
