@@ -1,4 +1,4 @@
-const { zonedTimeToUtc } = require('date-fns-tz');
+const { zonedTimeToUtc, utcToZonedTime } = require('date-fns-tz');
 
 const toUTC = (date, time, ampm, timezone) => {
 
@@ -43,17 +43,16 @@ const toLocal = (remindrArr, timeZone) => {
 
     const timeObj = remindrArr.send_date;
     const utcTime = dateConstructor(timeObj)
-    const localTime = utcToZonedTime(utcTime, timeZone)
-    //const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
+    const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
     const localTimeFormatted = localTimeFormatter(localTime);
     remindrArr.send_date = localTimeFormatted;
 
   } else {
     for (let i = 0; i < remindrArr.length; i++) {
+      // console.log(remindrArr[i]);
       const timeObj = remindrArr[i].send_date;
       const utcTime = dateConstructor(timeObj)
-      const localTime = utcToZonedTime(utcTime, timeZone)
-      //const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
+      const localTime = new Intl.DateTimeFormat('ko-KR', options).format(utcTime);
       const localTimeFormatted = localTimeFormatter(localTime);
       remindrArr[i].send_date = localTimeFormatted;
     }
@@ -76,12 +75,14 @@ const dateConstructor = (timeObj) => {
 
 const localTimeFormatter = (timeObj) => {
 
+  console.log(timeObj);
+
   const year = timeObj.substring(0,4);
   const month = timeObj.substring(6,8)
   const day = timeObj.substring(10,12);
   const hour = timeObj.substring(14,16);
   const minute = timeObj.substring(17,19);
-
+  console.log(`${year}-${month}-${day}T${hour}:${minute}`);
   return `${year}-${month}-${day}T${hour}:${minute}`
 }
 

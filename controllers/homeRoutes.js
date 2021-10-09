@@ -35,11 +35,9 @@ router.get('/profile', withAuth, async (req, res) => {
     // Serialize data so the template can read it
     const user = userData.get({ plain: true });
 
-    // console.log(user.timeZone);
-
     //Iterate over the messages array
     const remindrs = userData.messages.map((remindr) => remindr.get({ plain: true }));
-
+    
     const localTimeRemindrs = toLocal(remindrs, user.timeZone);
 
     res.render('profile', { user, localTimeRemindrs });
