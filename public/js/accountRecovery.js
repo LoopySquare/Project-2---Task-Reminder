@@ -19,7 +19,7 @@ const recoverFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace(`/account/password/reset`);
     } else {
-      swal.fire("Current Password Does not match what's on record");
+      swal.fire("No Account found with this Email Address");
       document.querySelector('#current-password').focus();
       document.getElementById("current-password").classList.add('is-danger');
     }

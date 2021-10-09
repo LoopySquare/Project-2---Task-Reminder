@@ -65,14 +65,14 @@
           <th class="table-headings has-text-black is-size-4">Delete Remindr</th>
         </tr>
       </tfoot>
-      {{#if remindrs.length}}
+      {{#if localTimeRemindrs.length}}
       <tbody>
-        {{#each remindrs as |remindr|}}
+        {{#each localTimeRemindrs as |remindr|}}
         <tr>
             <td class="table-title has-text-primary"><p>{{remindr.event_name}}</p></td>
             <td class="table-description has-text-dark"><p>{{remindr.description}}</p></td>
             <td><p class="remindr-date has-text-dark">{{remindr.send_date}}</p></td>
-            <td class="table-time has-text-dark">{{remindr.send_time}} {{remindr.am_pm}}</td>
+            <td class="remindr-time table-time has-text-dark">{{remindr.send_date}}</td>
             <td><a data-remindrId="{{remindr.id}}" class="button is-info edit-remindr" title="Edit Remindr"><i class="fas fa-edit"></i></a></td>
             <td><a data-remindrId="{{remindr.id}}" class="button is-danger delete-remindr" title="Sample Title"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
         </tr>

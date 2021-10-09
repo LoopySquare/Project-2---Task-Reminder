@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Message, User } = require('../../models');
 const withAuth = require('../../utils/auth');
-
+const { toUTC } = require('../../utils/convertTime');
 
 router.get('/:id', withAuth, async (req, res) => {
   try {
@@ -31,9 +31,7 @@ router.post('/export', async (req, res) => {
         },
       ],
       where:{
-        send_date: req.body.current_date,
-        send_time: req.body.current_time,
-        am_pm: req.body.am_pm,
+        send_date: req.body.currTime,
       }
     });
 
@@ -48,13 +46,33 @@ router.post('/export', async (req, res) => {
 
 router.post('/', withAuth, async (req, res) => {
   try {
+
+    const userData = await User.findByPk(req.session.user_id,{
+      attributes: ['timeZone'],
+      where: {
+        id: req.session.user_id,
+      }
+    })
+
+    const userTZ = await userData.get({ plain: true })
+
+    const utcTime = await toUTC(req.body.send_date, 
+                                req.body.send_time, 
+                                req.body.am_pm, 
+                                userTZ.timeZone
+                              );
+
     const newMessage = await Message.create({
-      ...req.body,
+      event_name: req.body.event_name,
+      description: req.body.description,
+      content: req.body.content,
+      send_date: utcTime,
       user_id: req.session.user_id,
     });
 
     res.status(200).json(newMessage);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
@@ -62,13 +80,27 @@ router.post('/', withAuth, async (req, res) => {
 router.put('/:id', withAuth , async (req, res) => {
   // update a category by its `id` value
   try {
+
+    const userData = await User.findByPk(req.session.user_id,{
+      attributes: ['timeZone'],
+      where: {
+        id: req.session.user_id,
+      }
+    })
+
+    const user = await userData.get({ plain: true })
+
+    const utcTime = await toUTC(req.body.send_date, 
+                                req.body.send_time, 
+                                req.body.am_pm, 
+                                user.timeZone
+                              );
+
     const messageData = await Message.update({ 
       event_name: req.body.event_name ,
       description: req.body.description ,
       content: req.body.content ,
-      send_date: req.body.send_date ,
-      send_time: req.body.send_time ,
-      am_pm: req.body.am_pm,
+      send_date: utcTime
     },
     {
       where: {

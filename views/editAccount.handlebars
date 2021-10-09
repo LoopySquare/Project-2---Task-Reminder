@@ -106,7 +106,6 @@
           </div>
         </div>
 
-
         <div class="field">
           <label class="label">Phone Number</label>
           <div class="control has-icons-left has-icons-right">
@@ -115,6 +114,22 @@
                 <i class="fas fa-phone"></i>
               </span>
           </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Time Zone</label>
+            <div class="control">
+              <div class="select">
+                <select id="time-zone">
+                <option id="user-time-zone" value="{{timeZone}}"></option>
+                  <option value="America/New_York">Eastern Time</option>
+                  <option value="America/Chicago">Central Time</option>
+                  <option value="America/Denver">Mountain Time</option>
+                  <option value="America/Phoenix">Mountain Time(AZ)</option>
+                  <option value="America/Los_Angeles">Pacific Time</option>
+                </select>
+              </div>
+            </div>
         </div>
 
         <div class="control pt-5 pb-2 has-text-centered">
@@ -138,5 +153,6 @@
 
 <script src="/js/formatPhone.js"></script>
 <script src="/js/editAccount.js"></script>
+<script src="/js/timeZoneSelection.js"></script>
 
 {{/user }}

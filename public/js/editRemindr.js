@@ -1,18 +1,7 @@
-const elem = document.getElementById('ampm');
-
-const am_pm = elem.dataset.ampm
-
-const amRadio = document.querySelector("#AM");
-const pmRadio = document.querySelector("#PM");
-
-if(am_pm == "AM"){
-  amRadio.checked = true;
-} else {
-  pmRadio.checked = true;
-}
-
 const saveButtonHandler = async (event) => {
   event.preventDefault();
+
+  console.log('I clicked this');
 
   const id = event.target.getAttribute('data-remindrId');
 
@@ -24,10 +13,11 @@ const saveButtonHandler = async (event) => {
   const send_time = document.querySelector('#send_time').value.trim();
   const am_pm = document.querySelector('input[name="ampm"]:checked').value.trim();
 
-  console.log(am_pm);
+  validDate = validateDate(send_date);
 
   if (event_name && description && content && send_date && send_time && am_pm) {
     // Send a POST request to the API endpoint
+    console.log('I got here');
     const response = await fetch(`/api/messages/${id}`, {
       method: 'PUT',
       body: JSON.stringify({ event_name, description, content, send_date, send_time, am_pm }),
@@ -52,6 +42,8 @@ const saveButtonHandler = async (event) => {
     } else {
       alert(response.statusText);
     }
+  } else {
+    console.log('This didnt work');
   }
 };
 
@@ -74,6 +66,14 @@ const cancelButtonHandler = async (event) => {
   }
 
 };
+
+const validateDate = (date) => {
+  if(date === ''){
+    swal.fire("Please Re-select your Alert Date!");
+    document.querySelector("#send_date").classList.add('is-danger');
+    document.querySelector('#send_date').focus();
+  }
+}
 
 document
   .querySelector('#save-remindr')

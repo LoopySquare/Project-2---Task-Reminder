@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "event_name": "test",
+        "content": "test",
+        "user": {
+            "first_name": "Nathaniel",
+            "last_name": "Ehrlich",
+            "email": "nwehrlich@gmail.com"
+        }
+    }
+]

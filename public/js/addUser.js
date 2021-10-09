@@ -8,12 +8,15 @@ const createFormHandler = async (event) => {
   const confirmPassword = document.querySelector('#confirm-password').value.trim();
   const email = document.querySelector('#email').value.trim();
   const rawPhone = document.querySelector('#phone').value.trim();
+  const timeZone = document.querySelector('#time-zone').value.trim();
+  
 
   const validName = await validateName(first_name, last_name)
   const passMatch = await validatePass(password, confirmPassword);
   const validEmail = await validateEmail(email);
   const phone = await formatPhone(rawPhone);
   const validPhone = await validatePhone(phone)
+  const validTZ = await validateTZ(timeZone);
 
 
   if(!validName){
@@ -36,13 +39,19 @@ const createFormHandler = async (event) => {
     blankPass();
     document.querySelector('#phone').focus();
     return;
+  }
+
+  if(!validTZ){
+    blankPass();
+    document.querySelector('#time-zone').focus();
+    return;
   } 
   
-  if (first_name && last_name && email && password && phone) {
+  if (first_name && last_name && email && password && phone && timeZone) {
 
     const response = await fetch('/api/users/create', {
       method: 'POST',
-      body: JSON.stringify({ first_name, last_name, email, password, phone }),
+      body: JSON.stringify({ first_name, last_name, email, password, phone, timeZone }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -179,6 +188,15 @@ const validatePhone = async (phone) => {
 const formatPhone = (phone) => {
 
   return phone.replace(/\D/g, '');
+}
+
+const validateTZ = async (timeZone) => {
+
+  if(timeZone === 'default'){
+    swal.fire("Please Select Your Time Zone");
+    return false;
+  }
+  return true;
 }
 
 // BLANK OUT PW FIELDS UPON REFRESHES
