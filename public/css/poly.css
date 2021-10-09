@@ -1,0 +1,153 @@
+html { 
+    background: url("../img/poly-bg.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+.header{
+    background-color: rgba(255, 255, 255, 0);
+    padding-top: 40px;
+    padding-bottom: 0%;
+}
+
+.main-header{
+    background-color: black;
+    padding: 40px;
+}
+
+.profile-card{
+    background: url("../img/poly-card2.png") no-repeat center center fixed;
+}
+
+.profile-buttons{
+    background-color: #2d092d !important;
+    text-shadow: 0px 0px 10px #be136f ;
+}
+
+.bio{
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #2d092d !important;
+}
+
+.form-container{
+    margin: 20px;
+    max-width: 1000px;
+    padding: 75px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.6)
+}
+  
+.container{
+    margin: auto;
+}
+
+.description{
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.remindrLogo{
+    max-height: 150px;
+    width: auto;
+    position: relative; bottom: 20px;
+}
+  
+.logo{
+    position: relative; bottom: 70px;
+    color: white;
+}
+
+.first-name{
+    color: #2d092d !important;
+}
+
+.email{
+    color: #2d092d !important;
+}
+
+.table-data{
+    background: url("../img/poly-card2.png") no-repeat center center fixed;
+}
+
+.table-head{
+    background: url("../img/poly-card2.png") no-repeat center center fixed;
+}
+
+.table-foot{
+    background: url("../img/poly-card2.png") no-repeat center center fixed;
+}
+
+.table-headings{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #2d092d !important;
+}
+
+.table-title{
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #2d092d !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem !important;
+}
+
+.table-description{
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #2d092d !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem !important;
+}
+
+.table-date{
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #2d092d !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem !important;
+}
+
+.remindr-date{
+    color: #2d092d !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem !important;
+}
+
+.table-time{
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    color: #2d092d !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem !important;
+}
+
+.table-edit{
+    background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.table-trash{
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.label{
+    font-size: 1.1rem !important;
+    color: white !important;
+}
+
+.radio{
+    font-size: 1.1rem !important;
+    color: white !important;
+}
+
+.update-password{
+    color: white !important;
+}
+
+.forgot{
+    color: #2d092d;
+}
+
+.emailLabel{
+    color: #2d092d !important;
+}
+
+.passwordLabel{
+    color: #2d092d !important;
+}

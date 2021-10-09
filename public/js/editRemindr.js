@@ -25,7 +25,7 @@ const saveButtonHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       
       const result = await Swal.fire({
-        title: 'Congradulations!',
+        title: 'Congratulations!',
         text: 'You successfully updated your Remindr!',
         icon: 'success',
         showCancelButton: true,

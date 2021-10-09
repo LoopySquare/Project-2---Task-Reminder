@@ -24,7 +24,7 @@ const createButtonHandler = async (event) => {
       // If successful, redirect the browser to the profile page
 
       const result = await Swal.fire({
-        title: 'Congradulations!',
+        title: 'Congratulations!',
 
         text: 'You successfully added a new Remindr!',
         icon: 'success',
