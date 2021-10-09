@@ -42,8 +42,6 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const localTimeRemindrs = toLocal(remindrs, user.timeZone);
 
-    console.log(localTimeRemindrs);
-
     res.render('profile', { user, localTimeRemindrs });
 
   } catch (err) {
