@@ -53,7 +53,7 @@ router.get('/message/edit/:id', withAuth, async (req, res) => {
   try {
 
     const userData = await User.findByPk(req.session.user_id,{
-    attributes: ['timeZone'],
+    attributes: ['timeZone', 'theme'],
     where: {
       id: req.session.user_id,
     }
@@ -71,7 +71,7 @@ router.get('/message/edit/:id', withAuth, async (req, res) => {
 
     const localTimeRemindrs = toLocal(remindr, user.timeZone);
 
-    res.render('editRemindr', { localTimeRemindrs } )
+    res.render('editRemindr', { user, localTimeRemindrs } )
 
   } catch (err) {
     res.status(400).json(err);
