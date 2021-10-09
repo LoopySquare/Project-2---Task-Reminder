@@ -8,7 +8,7 @@ const remindrMailer = async (remindrsObject) => {
 
   console.log(remindrsObject);
 
-  Checks if any Data was exported, if object is empty, end
+  // Checks if any Data was exported, if object is empty, end
   if(remindrsObject[0] === undefined){
     return;
 
