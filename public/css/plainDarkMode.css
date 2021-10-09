@@ -1,0 +1,78 @@
+html { 
+    background: url("../img/dark-mode-bg.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.profile-card{
+    background: url("../img/dark-mode-card.png")
+}
+
+.bio{
+    /* on click add class has-text-light */
+    font-family: 'Ubuntu', sans-serif;
+    color: white !important;
+    opacity: 87%;
+}
+
+.first-name{
+    color: white !important; 
+    opacity: 87%;
+}
+
+.email{
+    color: white !important;
+    opacity: 87%;
+}
+
+.table-head{
+    background-color: #102a43;
+}
+  
+.table-foot{
+    background-color: #102a43
+}
+  
+.table-title{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem;
+    color: #aeee98 !important;
+}
+  
+.table-description{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.1rem;
+    color: white !important; 
+    opacity: 87%;
+}
+  
+.remindr-date{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem;
+    color: white !important; 
+    opacity: 87%;
+}
+  
+.table-time{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem;
+    color: white !important; 
+    opacity: 87%;
+}
+  
+.table-headings{
+    font-family: 'Ubuntu', sans-serif;
+    color: #F0F4F8 !important;
+    opacity: 87%;
+}
+
+.table-data{
+    background-color: #364c61;
+}
+
+.profile-buttons{
+    background-color: #aeee98 !important;
+    color: #1d2025 !important;
+}

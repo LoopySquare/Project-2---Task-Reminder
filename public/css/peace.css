@@ -1,0 +1,85 @@
+html { 
+    background: url("../img/peace-bg.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+.header{
+    background-color: rgba(255, 255, 255, 0);
+    padding-top: 40px;
+    padding-bottom: 0%;
+}
+
+.profile-card{
+    background: url("../img/peace-card.png") no-repeat center center fixed;
+}
+
+.profile-buttons{
+    background-color: #be136f !important;
+    background-color: #2d092d !important;
+    text-shadow: 0px 0px 10px #be136f ;
+}
+
+.bio{
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #2d092d !important;
+}
+
+.first-name{
+    color: #2d092d !important;
+}
+
+.email{
+    color: #2d092d !important;
+}
+
+.table-data{
+    background: url("../img/peace-card.png") no-repeat center center fixed;
+}
+
+.table-head{
+    background: url("../img/peace-card.png") no-repeat center center fixed;
+}
+
+.table-foot{
+    background: url("../img/peace-card.png") no-repeat center center fixed;
+}
+
+.table-headings{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #2d092d !important;
+}
+
+.table-title{
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #2d092d !important;
+}
+
+.table-description{
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #2d092d !important;
+}
+
+.table-date{
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #2d092d !important;
+}
+
+.remindr-date{
+    color: #2d092d !important;
+}
+
+.table-time{
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    color: #2d092d !important;
+}
+
+.table-edit{
+    background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.table-trash{
+    background-color: rgba(255, 255, 255, 0.25);
+}
