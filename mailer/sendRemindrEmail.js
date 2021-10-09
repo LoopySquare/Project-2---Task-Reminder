@@ -1,12 +1,8 @@
-const path = require('path');
 const nodemailer = require('nodemailer');
-const { readFromFile } = require('../utils/fsUtils');
-
 require('dotenv').config({path: "../.env"});
 
 const remindrMailer = async (remindrsObject) => {
 
-  console.log(remindrsObject);
 
   // Checks if any Data was exported, if object is empty, end
   if(remindrsObject[0] === undefined){
