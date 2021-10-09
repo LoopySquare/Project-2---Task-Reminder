@@ -101,4 +101,3 @@ const timeFormatter = (timeObj) => {
 
 module.exports = {toUTC, toLocal, timeFormatter};
 
-console.log(toUTC('2021-10-09', '12:29', 'AM', 'America/Denver'));
