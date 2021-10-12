@@ -1,5 +1,11 @@
-const updateTheme = (timeZoneID) => {
-  switch (timeZoneID) {
+/**
+ * Switch Case to convert the value returned from the user account data fetch
+ * into the proper text value to display in the form.
+ * @param {STRING} timeZoneID '/css/style.css'
+ * @returns {STRING} 'Default'
+ */
+const updateTheme = (themeURL) => {
+  switch (themeURL) {
     case '/css/style.css':
       return 'Default'
 

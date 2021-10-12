@@ -1,7 +1,18 @@
+/**
+ * Takes in the hour value and checks if it is greater or less than 12
+ * Retuns appropriate AM or PM value
+ * @param {STRING} time 
+ * @returns {STRING}
+ */
 const getAmPm = (time) => {
   return time >= 12 ? 'PM' : 'AM';
 }
 
+/**
+ * Converts the hour value from 24 to 12 hour format
+ * @param {STRING} time 
+ * @returns STRING
+ */
 const getHour = (time) => {
   hour = time % 12;
   hour = hour ? hour : 12;
@@ -9,10 +20,14 @@ const getHour = (time) => {
   return hour
 }
 
+/**
+ * Takes the constructed time value, and checks if it is AM or PM
+ * Then selects the radio button that matches
+ * @param {STRING} time 
+ */
 const setAmPm = (time) => {
 
   const timeArr = time.split(' ');
-
   const amRadio = document.querySelector("#AM");
   const pmRadio = document.querySelector("#PM");
   
@@ -24,6 +39,11 @@ const setAmPm = (time) => {
 
 }
 
+/**
+ * Takes in the DateTime value and converts to a readable Date
+ * @param {STRING} date 2021-10-10T16:00
+ * @returns {STRING} 10/10/2021
+ */
 const formatDateEditRemindr = (date) => {
 
   dateTrim = date.replace('Alert Day currently selected: ', '')
@@ -35,6 +55,11 @@ const formatDateEditRemindr = (date) => {
   return `Alert Day currently selected: ${month}/${day}/${year}`
 }
 
+/**
+ * Takes in the DateTime value and converts to a readable time
+ * @param {STRING} date 2021-10-10T16:00
+ * @returns {STRING} 4:00 PM
+ */
 const formatTimeEditRemindr = (date) => {
 
   timeTrim = date.replace('Alert Time currently selected: ', '')
@@ -48,9 +73,13 @@ const formatTimeEditRemindr = (date) => {
 
 }
 
+/**
+ * Takes the value of the time value '4:00 PM', splits it on a ' ' (Space)
+ * and sets the '4:00' value to the Drop-down selector value
+ * @param {STRING} time 
+ */
 const setTime = (time) => {
   const timeArr = time.split(' ');
-
   document.querySelector('#user-current-time').innerHTML = timeArr[0]
 }
 
@@ -83,6 +112,10 @@ const formatTimeProfile = () => {
   }
 }
 
+/**
+ * Conditional statement, since this script is used on both the Edit Remindr page, and New Remindr Page.
+ * Takes the data return from the Fetch request, and properly formats it for viewing ease.
+ */
 if(document.getElementById('formatted-time') && document.getElementById('formatted-date')){
   const rawTime = document.getElementById('formatted-time').textContent
   const newTime = formatTimeEditRemindr(rawTime);
@@ -94,6 +127,10 @@ if(document.getElementById('formatted-time') && document.getElementById('formatt
   document.querySelector('#formatted-date').textContent = formatDateEditRemindr(rawDate);
 }
 
+/**
+ * Conditional statement, since this script is used on both the Edit Remindr page, and New Remindr Page.
+ * Takes the data return from the Fetch request, and properly formats it for viewing ease.
+ */
 if(document.querySelector('.remindr-date') && document.querySelector('.remindr-time')){
   formatDateProfile();
   formatTimeProfile();

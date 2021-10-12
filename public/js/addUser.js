@@ -98,6 +98,12 @@ const cancelButtonHandler = async (event) => {
   
 };
 
+/**
+ * Validates that the Name fields are not blank
+ * @param {STRING} fname 
+ * @param {STRING} lname 
+ * @returns {BOOLEAN}
+ */
 const validateName = async (fname, lname) => {
 
   if(fname == '' && lname == ''){
@@ -122,7 +128,12 @@ const validateName = async (fname, lname) => {
 
 }
 
-// VALIDATE PASSWORD AND CONFIRM PASSWORD ARE THE SAME AND PROPER LEN
+/**
+ * Validates the Password field and length and Confirm Password fields match
+ * @param {STRING} pass 
+ * @param {STRING} confirmPass 
+ * @returns {BOOLEAN}
+ */
 const validatePass = async (pass, confirmPass) => {
 
   if(pass === ''){
@@ -155,7 +166,11 @@ const validatePass = async (pass, confirmPass) => {
 
 }
 
-// VALIDATE EMAIL IS IN AN EMAIL FORMAT
+/**
+ * Validates the Email matches proper email formatting with RegEx
+ * @param {STRING} email 
+ * @returns {BOOLEAN}
+ */
 const validateEmail = async (email) => {
 
   let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -174,8 +189,11 @@ const validateEmail = async (email) => {
 
 }
 
-// STRIP DASHES FROM PHONE FIELDS
-
+/**
+ * Validates the phone field is filled out and is 10 digits
+ * @param {STRING} phone 
+ * @returns {BOOLEAN}
+ */
 const validatePhone = async (phone) => {
   if(phone === '' || phone.length !== 10){
     swal.fire("Please Enter a 10 Digit Phone Number");
@@ -185,11 +203,21 @@ const validatePhone = async (phone) => {
   }
 }
 
+/**
+ * Strips all none numeric values from phone field.
+ * @param {STRING} phone 
+ * @returns {STRING}
+ */
 const formatPhone = (phone) => {
 
   return phone.replace(/\D/g, '');
 }
 
+/**
+ * Validates the User has entered in a TimeZone
+ * @param {STRING} timeZone 
+ * @returns {BOOLEAN}
+ */
 const validateTZ = async (timeZone) => {
 
   if(timeZone === 'default'){
@@ -199,7 +227,9 @@ const validateTZ = async (timeZone) => {
   return true;
 }
 
-// BLANK OUT PW FIELDS UPON REFRESHES
+/**
+ * Blanks out the Password fields
+ */
 const blankPass = () => {
   document.querySelector('#password').value = ""
   document.querySelector('#confirm-password').value = ""
