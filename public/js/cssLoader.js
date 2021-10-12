@@ -1,3 +1,4 @@
+
 window.addEventListener("load",function() {
   document.getElementById("theme-selector").addEventListener("change",function() {
     const style = this.value;
@@ -10,6 +11,10 @@ window.addEventListener("load",function() {
 
 });
 
+/**
+ * Changes the stylesheet URL to customized stylesheets for user to choose
+ * @param {STRING} url 
+ */
 function setStyleSheet(url){
     document.getElementById("stylesheet").setAttribute('href', url);
  }

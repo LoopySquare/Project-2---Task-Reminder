@@ -13,6 +13,10 @@ const saveButtonHandler = async (event) => {
 
   validDate = validateDate(send_date);
 
+  if(!validDate){
+    return;
+  }
+
   if (event_name && description && content && send_date && send_time && am_pm) {
     // Send a POST request to the API endpoint
     const response = await fetch(`/api/messages/${id}`, {
@@ -62,12 +66,19 @@ const cancelButtonHandler = async (event) => {
 
 };
 
+/**
+ * Validates the users has selected a Date
+ * @param {STRING} date 
+ * @returns {BOOLEAN}
+ */
 const validateDate = (date) => {
   if(date === ''){
     swal.fire("Please Re-select your Alert Date!");
     document.querySelector("#send_date").classList.add('is-danger');
     document.querySelector('#send_date').focus();
+    return false;
   }
+  return true;
 }
 
 document

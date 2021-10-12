@@ -1,3 +1,11 @@
+/**
+ * Takes in the firstname and messagecontent of the mailer object to create an HTML email to send
+ * to the recipient
+ * @param {STRING} firstName 
+ * @param {STRING} messageContent 
+ * @returns 
+ */
+
 const notificationEmailTemplate = (firstName, messageContent) => {
 
    return `

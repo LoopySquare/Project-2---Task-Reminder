@@ -1,3 +1,9 @@
+/**
+ * Takes in the value returned from user account fetch, and converts the value into
+ * a readable string. 
+ * @param {STRING} timeZoneID 'America/New_York'
+ * @returns {STRING} 'Eastern Time'
+ */
 const updateTZ = (timeZoneID) => {
   switch (timeZoneID) {
     case 'America/New_York':

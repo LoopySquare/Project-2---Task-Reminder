@@ -1,5 +1,14 @@
 const { zonedTimeToUtc, utcToZonedTime } = require('date-fns-tz');
 
+/**
+//  * This function takes in the Values from the Form Submission and converts them 
+      into a UTC DateTimes string.
+ * @param {STRING} date 
+ * @param {STRING} time 
+ * @param {STRING} ampm 
+ * @param {STRING} timezone 
+ * @returns {STRING}
+ */
 const toUTC = (date, time, ampm, timezone) => {
 
   const timeArr = time.split(':');
@@ -29,6 +38,14 @@ const toUTC = (date, time, ampm, timezone) => {
 
 }
 
+/**
+ * This function takes in a return of a DB call, and converts the UTC time in the DB
+ *  to the users local time defined by the TimeZone values stored in their user Profile.
+ * ONLY UPDATES THE send_date field in User Object.
+ * @param {ARRAY} remindrArr 
+ * @param {STRING} timeZone 
+ * @returns {ARRAY}
+ */
 const toLocal = (remindrArr, timeZone) => {
 
   options = {
@@ -63,18 +80,31 @@ const toLocal = (remindrArr, timeZone) => {
   return remindrArr
 }
 
-const dateConstructor = (timeObj) => {
+/**
+ * The function utcToZonedTime requires the date time to be in a very specific format
+ * This function takes value from the send_date DB field and converts it into the proper format
+ * needed in the utcToZonedTime() function
+ * @param {String} timeObj 
+ * @returns {STRING}
+ */
+const dateConstructor = (time) => {
 
-  const year = Number(timeObj.substring(0,4));
-  const month = Number(timeObj.substring(5,7)) - 1
-  const day = Number(timeObj.substring(8,10));
-  const hour = Number(timeObj.substring(11,13));
-  const minute = Number(timeObj.substring(14,16));
+  const year = Number(time.substring(0,4));
+  const month = Number(time.substring(5,7)) - 1
+  const day = Number(time.substring(8,10));
+  const hour = Number(time.substring(11,13));
+  const minute = Number(time.substring(14,16));
 
   return new Date(Date.UTC(year, month, day, hour, minute));
 
 }
 
+/**
+ * This function takes in the output from utcToZonedTime() and converts the output object
+ * into a String that can then be used by other functions and methods
+ * @param {Object} timeObj 
+ * @returns {STRING}
+ */
 const localTimeFormatter = (timeObj) => {
 
   timeStr = timeFormatter(timeObj)
@@ -87,14 +117,18 @@ const localTimeFormatter = (timeObj) => {
   return `${year}-${month}-${day}T${hour}:${minute}`
 }
 
+/**
+ * This function is similar to localTimeFormatter, however, this is for writing to the DB
+ * It uses JSON.stringify to convert the Object to a String, then removes the double quotes
+ * from the outside of the String
+ * @param {Object} timeObj 
+ * @returns {STRING}
+ */
 const timeFormatter = (timeObj) => {
 
   const utcRaw = JSON.stringify(timeObj)
-
   const removeQuote1 = utcRaw.replace('"', '')
-
   const removeQuote2 =  removeQuote1.replace('"', '')
-
   return removeQuote2.substring(0,16)
 
 }

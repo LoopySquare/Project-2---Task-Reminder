@@ -28,6 +28,11 @@ const cancelFormHandler = async () => {
   document.location.replace('/');
 }
 
+/**
+ * Validates that users email matches email params
+ * @param {STRING} email 
+ * @returns {Boolean}
+ */
 const validateEmail = async (email) => {
 
   let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

@@ -77,11 +77,16 @@ const cancelButtonHandler = async (event) => {
 };
 
 const updatePasswordHandler = async () => {
-  
   document.location.replace(`/account/password/update`);
 
 };
 
+/**
+ * Validates the name fields are valid
+ * @param {STRING} fname 
+ * @param {STRING} lname 
+ * @returns {BOOLEAN}
+ */
 const validateName = async (fname, lname) => {
 
   if(fname == '' && lname == ''){
@@ -106,11 +111,21 @@ const validateName = async (fname, lname) => {
 
 }
 
+/**
+ * Uses RegEx to strip non-numeric chars
+ * @param {STRING} phone 
+ * @returns {STRING}
+ */
 const formatPhone = (phone) => {
 
   return phone.replace(/\D/g, '');
 }
 
+/**
+ * Validates phone field data
+ * @param {STRING} phone 
+ * @returns {BOOLEAN}
+ */
 const validatePhone = async (phone) => {
 
   if(phone === '' || phone.length !== 10){
@@ -121,6 +136,11 @@ const validatePhone = async (phone) => {
     return true;
 }
 
+/**
+ * Validates timeZone value is selected
+ * @param {STRING} timeZone 
+ * @returns {BOOLEAN}
+ */
 const validateTZ = async (timeZone) => {
 
   if(timeZone === 'default'){

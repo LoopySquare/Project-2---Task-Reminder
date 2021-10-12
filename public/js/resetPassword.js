@@ -47,7 +47,12 @@ const resetPasswordFormHandler = async (event) => {
     document.location.replace('/');
   }
   
-  // VALIDATE PASSWORD AND CONFIRM PASSWORD ARE THE SAME AND PROPER LEN
+/**
+ * Validates the newPass and confirmPass values match
+ * @param {STRING} newPass 
+ * @param {STRING} confirmPass 
+ * @returns {BOOLEAN}
+ */
   const validatePass = async (newPass, confirmPass) => {
     
     if(newPass === ''){

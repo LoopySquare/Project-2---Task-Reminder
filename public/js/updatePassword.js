@@ -36,11 +36,12 @@ const createFormHandler = async (event) => {
       
       if (result.isConfirmed) {
         document.location.replace(`/profile`);
-      // For more information about handling dismissals please visit
-      // https://sweetalert2.github.io/#handling-dismissals
       } 
+    
 
     } else {
+      // Takes response from fetch request, 
+      // if the currPassword value matches the Password value in the DB.
       swal.fire("Current Password Does not match what's on record");
       document.querySelector('#current-password').focus();
       document.getElementById("current-password").classList.add('is-danger');
@@ -67,7 +68,13 @@ const cancelButtonHandler = async (event) => {
   }
 };
 
-// VALIDATE PASSWORD AND CONFIRM PASSWORD ARE THE SAME AND PROPER LEN
+/**
+ * Validates the password fields are filled in, and match password requirements
+ * @param {STRING} currPass 
+ * @param {STRING} newPass 
+ * @param {STRING} confirmPass 
+ * @returns {BOOLEAN}
+ */
 const validatePass = async (currPass, newPass, confirmPass) => {
 
   if(currPass === ''){

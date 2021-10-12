@@ -1,3 +1,8 @@
+/**
+ * Takes in the return from the DB fetch and converts to viewable number
+ * @param {STRING} number 5555555555
+ * @returns {STRING} 555-555-5555
+ */
 const formatNumber = (number) => {
 
   // RegEx to remove all non-numeric characters
@@ -6,7 +11,7 @@ const formatNumber = (number) => {
 
   // Format numbers to be in the example format
   if (numArr.length === 10) {
-      // Exampe Format if 10 digit number '(555) 555-5555'
+      // Exampe Format if 10 digit number '555-555-5555'
       numArr.splice(3, 0, '-');
       numArr.splice(7, 0, '-');
   } else {
