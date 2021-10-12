@@ -91,7 +91,7 @@ router.put('/account/edit/', withAuth, async (req, res) => {
 });
 
 // Edit User Account
-router.put('/password/update/:id', withAuth, async (req, res) => {
+router.put('/password/update/', withAuth, async (req, res) => {
   try {
     
       const passData = await User.findByPk(req.session.user_id)
