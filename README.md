@@ -26,7 +26,7 @@
   9. run 'source schema.sql' then exit that CLI
   10. run 'npm run seed'
   10. run 'npm i'
-  11 run 'npm start'
+  11. run 'npm start'
 
   ### For testing scheduled task execution complete the following steps
   1. Edit server.js
