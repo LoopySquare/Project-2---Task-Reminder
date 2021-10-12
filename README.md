@@ -45,7 +45,7 @@
   This application is intended to be used to schedule and manage Remindrs from their own personal account.
 
   ### YouTube Run Instructions
-  [![YouTube How to Video](https://img.youtube.com/vi/8wSVL_SqPP4/0.jpg)](https://youtu.be/8wSVL_SqPP4)
+  [![YouTube How to Video](https://img.youtube.com/vi/aAicXZbc--A/0.jpg)](https://youtu.be/aAicXZbc--A)
             
   ## Credits
   No Credits Applicable
