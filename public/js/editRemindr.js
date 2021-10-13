@@ -81,6 +81,8 @@ const validateDate = (date) => {
   return true;
 }
 
+
+
 document
   .querySelector('#save-remindr')
   .addEventListener('click', saveButtonHandler);
