@@ -43,8 +43,8 @@
         <div class="field">
           <label class="label">Theme</label>
           <div class="select control mt-4">
-            <select id="theme-selector" onchange="setStyleSheet(this.value)">
-              <option id="user-theme" value="{{theme}}"></option>
+            <select data-theme="{{theme}}" id="theme-selector" onchange="setStyleSheet(this.value)">
+              {{!-- <option id="user-theme" value="{{theme}}"></option> --}}
               <option value="/css/style.css">Default</option>
               <option value="/css/plainLightMode.css">Basic Light</option>
               <option value="/css/plainDarkMode.css">Basic Dark</option>
@@ -106,8 +106,7 @@
           <label class="label">Time Zone</label>
             <div class="control">
               <div class="select">
-                <select id="time-zone">
-                <option id="user-time-zone" value="{{timeZone}}"></option>
+                <select data-timezone="{{timeZone}}" id="time-zone">
                   <option value="America/New_York">Eastern Time</option>
                   <option value="America/Chicago">Central Time</option>
                   <option value="America/Denver">Mountain Time</option>
