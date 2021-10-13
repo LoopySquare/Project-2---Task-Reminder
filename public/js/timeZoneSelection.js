@@ -1,30 +1,10 @@
-/**
- * Takes in the value returned from user account fetch, and converts the value into
- * a readable string. 
- * @param {STRING} timeZoneID 'America/New_York'
- * @returns {STRING} 'Eastern Time'
- */
-const updateTZ = (timeZoneID) => {
-  switch (timeZoneID) {
-    case 'America/New_York':
-      return 'Eastern Time'
+const selectorElem = document.querySelector('#time-zone')
 
-    case 'America/Chicago':
-      return 'Central Time'
+const optionToSelect = selectorElem.getAttribute('data-timezone')
 
-    case 'America/Denver':
-      return 'Mountain Time'
-
-    case 'America/Phoenix':
-      return 'Mountain Time(AZ)'
-
-    case 'America/Los_Angeles':
-      return 'Pacific Time'
-    default:
-      break;
+for (let i = 0; i < selectorElem.length; i++) {
+  if(optionToSelect === selectorElem.options[i].value){
+    selectorElem.options[i].selected = true;
   }
 }
-
-const userTimeZoneElem = document.querySelector('#user-time-zone')
-userTimeZoneElem.innerHTML = updateTZ(userTimeZoneElem.value);
 

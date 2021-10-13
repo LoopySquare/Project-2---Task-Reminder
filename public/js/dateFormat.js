@@ -80,7 +80,28 @@ const formatTimeEditRemindr = (date) => {
  */
 const setTime = (time) => {
   const timeArr = time.split(' ');
-  document.querySelector('#user-current-time').innerHTML = timeArr[0]
+  
+  const selectorElem = document.querySelector('#send_time')
+
+  selectorElem.setAttribute('data-userSelectedTime' , timeArr[0]);
+
+  const timeToSelect = selectorElem.getAttribute('data-userSelectedTime')
+
+  for (let i = 0; i < selectorElem.length; i++) {
+    if(timeToSelect === selectorElem.options[i].text){
+      selectorElem.options[i].selected = true;
+      return;
+    }
+  }
+}
+
+const setDate = (date) => {
+
+  formattedDate = date.replace('Alert Day currently selected: ', '');
+  dateArr = formattedDate.split('/')
+  
+  document.getElementById('send_date').value = `${dateArr[2]}-${dateArr[0]}-${dateArr[1]}`;
+
 }
 
 // FORMATS DATE FOR VIEWABLE PLEASURE MM/DD/YYYY
@@ -124,6 +145,7 @@ if(document.getElementById('formatted-time') && document.getElementById('formatt
   setAmPm(newTime);
 
   const rawDate = document.getElementById('formatted-date').textContent
+  setDate(formatDateEditRemindr(rawDate));
   document.querySelector('#formatted-date').textContent = formatDateEditRemindr(rawDate);
 }
 

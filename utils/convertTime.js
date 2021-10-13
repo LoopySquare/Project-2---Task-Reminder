@@ -95,7 +95,6 @@ const dateConstructor = (time) => {
  * @returns {STRING} '2021-10-09T22:45'
  */
 const localTimeFormatter = (time) => {
-  console.log(time);
 
   timeStr = timeFormatter(time)
   // const year = timeStr.substring(0,4);
