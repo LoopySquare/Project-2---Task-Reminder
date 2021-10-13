@@ -38,8 +38,8 @@
   ### For times in dashboard to show correctly for local instance
   #### These lines convert current machine time from UTC to local depending to machines current time.
   1. Edit ./utils/convertTime.js
-  2. Uncomment lines 48 and 57
-  3. Comment lines 47 and 56
+  2. Uncomment lines 57 and 64
+  3. Comment lines 58 and 65
   
   ## Usage
   This application is intended to be used to schedule and manage Remindrs from their own personal account.
